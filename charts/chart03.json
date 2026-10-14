@@ -7,9 +7,7 @@
   "height": 560,
 
   "projection": {
-    "type": "conicEqualArea",
-    "center": [134, -28],
-    "parallels": [-18, -36]
+    "type": "equalEarth"
   },
 
   "params": [
@@ -35,7 +33,7 @@
   ],
 
   "data": {
-    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.min.geojson",
+    "url": "data/australian_states.geojson",
     "format": {
       "type": "json",
       "property": "features"
