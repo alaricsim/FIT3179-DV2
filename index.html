@@ -1,0 +1,918 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Transport in Australia</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vega@6.4.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@6.5.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@7.3.0"></script>
+</head>
+<body>
+
+    <!-- HERO -->
+    <header class="hero">
+        <nav class="nav">
+            <div class="nav-brand">Australia in Motion</div>
+
+            <div class="nav-links">
+                <a href="#overview">Overview</a>
+                <a href="#covid-recovery">COVID recovery</a>
+                <a href="#connections">Connections</a>
+                <a href="#daytype-distribution">Daily patterns</a>
+            </div>
+        </nav>
+
+        <div class="hero-content">
+            <p class="eyebrow">FIT3179 · DATA VISUALISATION · 2026</p>
+
+            <h1>
+                Australia
+                <span>in motion.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                A visual journey through Australia's public transport network:
+                how we travel, what changed, and what the data reveals.
+            </p>
+
+            <a class="scroll-link" href="#introduction">
+                Start the journey <span aria-hidden="true">↓</span>
+            </a>
+
+            <p class="hero-credit">An interactive data story by Alaric Sim</p>
+        </div>
+
+        <div class="hero-route-map" aria-hidden="true">
+            <svg viewBox="0 0 560 430" role="presentation">
+                <defs>
+                    <pattern id="route-grid" width="28" height="28" patternUnits="userSpaceOnUse">
+                        <circle cx="1" cy="1" r="1" fill="#f4f1e9" fill-opacity="0.13"></circle>
+                    </pattern>
+                </defs>
+                <rect width="560" height="430" fill="url(#route-grid)"></rect>
+                <path class="route route-rail" d="M68 363 170 261 170 155 280 45 390 45 490 145 490 255 390 355 280 355"></path>
+                <path class="route route-tram" d="M67 148 174 148 280 254 390 254 490 154"></path>
+                <path class="route route-bus" d="M68 363 68 256 174 148 280 45"></path>
+                <path class="route route-ferry" d="M280 355 390 355 490 255"></path>
+                <g class="route-stations">
+                    <circle cx="68" cy="363" r="8"></circle>
+                    <circle cx="170" cy="261" r="7"></circle>
+                    <circle cx="170" cy="155" r="7"></circle>
+                    <circle cx="280" cy="45" r="8"></circle>
+                    <circle cx="390" cy="45" r="7"></circle>
+                    <circle cx="490" cy="145" r="8"></circle>
+                    <circle cx="490" cy="255" r="7"></circle>
+                    <circle cx="390" cy="355" r="8"></circle>
+                    <circle cx="280" cy="254" r="6"></circle>
+                    <circle cx="68" cy="256" r="6"></circle>
+                </g>
+                <g class="route-labels">
+                    <text x="58" y="405">CITY</text>
+                    <text x="257" y="25">NORTH</text>
+                    <text x="451" y="300">EAST</text>
+                    <text x="365" y="398">COAST</text>
+                </g>
+            </svg>
+            <div class="route-map-caption">
+                <span class="route-live-dot"></span>
+                <span>One network. Many ways to move.</span>
+            </div>
+        </div>
+
+        <div class="transport-strip">
+            <span>TRAIN</span>
+            <span>BUS</span>
+            <span>TRAM</span>
+            <span>FERRY</span>
+        </div>
+    </header>
+
+
+    <main>
+
+        <!-- INTRODUCTION -->
+        <section id="introduction" class="intro-section">
+
+            <div class="section-number">00</div>
+
+            <div class="intro-grid">
+
+                <div>
+                    <p class="section-kicker">YOUR ROUTE THROUGH THE DATA</p>
+
+                    <h2>
+                        Eight views. One changing network.
+                    </h2>
+                </div>
+
+                <div class="intro-copy">
+                    <p class="lead">
+                        Follow the data from the national picture to the
+                        everyday journey.
+                    </p>
+
+                    <p>
+                        Choose a stop below, or scroll through the charts in
+                        sequence. Each view highlights a different pattern
+                        in how Australians move.
+                    </p>
+                </div>
+
+            </div>
+
+            <nav class="story-index" aria-label="Explore the data story">
+                <a class="story-index-link" href="#overview">
+                    <span class="story-index-number">01</span>
+                    <span class="story-index-copy">
+                        <strong>Across Australia</strong>
+                        <small>Compare capital-city networks</small>
+                    </span>
+                    <span class="story-index-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="story-index-link" href="#covid-recovery">
+                    <span class="story-index-number">04</span>
+                    <span class="story-index-copy">
+                        <strong>Network under pressure</strong>
+                        <small>Trace the pandemic and recovery</small>
+                    </span>
+                    <span class="story-index-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="story-index-link" href="#connections">
+                    <span class="story-index-number">06</span>
+                    <span class="story-index-copy">
+                        <strong>Connected journeys</strong>
+                        <small>Follow links between cities</small>
+                    </span>
+                    <span class="story-index-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="story-index-link" href="#daytype-distribution">
+                    <span class="story-index-number">07</span>
+                    <span class="story-index-copy">
+                        <strong>Everyday patterns</strong>
+                        <small>See routines across the week</small>
+                    </span>
+                    <span class="story-index-arrow" aria-hidden="true">↗</span>
+                </a>
+            </nav>
+
+        </section>
+
+
+        <!-- SECTION 1 -->
+        <section id="overview" class="story-section">
+
+            <div class="section-heading">
+                <div class="section-number">01</div>
+
+                <div>
+                    <p class="section-kicker">THE NATIONAL PICTURE</p>
+
+                    <h2>One country. Very different ways of moving.</h2>
+
+                    <p class="section-description">
+                        Public transport use varies substantially between
+                        Australian cities. Geography, population and the
+                        availability of different modes all shape how people move.
+                    </p>
+                </div>
+            </div>
+
+            <div class="visual-card visual-card-large">
+                <div id="chart1"></div>
+            </div>
+
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="rhythm" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">02</div>
+
+                <div>
+                    <p class="section-kicker">
+                        THE RHYTHM OF THE WEEK
+                    </p>
+
+                    <h2>
+                        Melbourne’s transport network has a rhythm of its own.
+                    </h2>
+
+                    <p class="section-description">
+                        Travel demand follows a recognisable weekly rhythm.
+                        Weekdays carry the regular commute, while weekends reveal
+                        a different pattern of movement across Victoria's public
+                        transport network.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card">
+
+                <div class="chart-header">
+
+                    <div>
+                        <h3>
+                            A year of travel, one week at a time
+                        </h3>
+
+                        <p>
+                            Each cell represents average daily passenger boardings
+                            for a particular month and day of the week.
+                            Darker cells indicate busier days.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="chart2"></div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Read horizontally to compare weekdays with weekends.
+                        Read vertically to see how the same day changes through
+                        the year. Use the controls above the chart to compare
+                        different transport modes and years.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Victorian Department of Transport and Planning,
+                    Monthly average patronage by day type and by mode.
+                    Weekday cells represent normal weekdays; Saturday and Sunday
+                    represent weekend travel.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="commute-map" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">03</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        THE GEOGRAPHY OF THE COMMUTE
+                    </p>
+
+                    <h2>
+                        Public transport matters more to the commute
+                        in some parts of Australia than others.
+                    </h2>
+
+                    <p class="section-description">
+                        The role of public transport differs substantially across
+                        Australia's states and territories. This map shows the share
+                        of commuters using public transport as their only method of
+                        travel to work.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-large">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            Public transport share of one-method commuters
+                        </h3>
+
+                        <p>
+                            Darker regions indicate a greater reliance on public
+                            transport for the journey to work. Change the Census year
+                            to see how commuting patterns have shifted over time.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="chart3"></div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Colour represents the percentage of employed people who
+                        reported public transport as their single method of travel
+                        to work. The measure excludes people working from home
+                        and people using multiple travel methods.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Bureau of Infrastructure and Transport Research Economics,
+                    Australian Infrastructure and Transport Statistics Yearbook 2025,
+                    Tables 2.4a–2.4h. Original Census data sourced by BITRE from the
+                    Australian Bureau of Statistics.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SECTION 4 -->
+        <section id="covid-recovery" class="story-section dark-section">
+
+            <div class="covid-marker-note">
+                <span class="covid-line"></span>
+
+                <p>
+                    March 2020 — COVID-19 restrictions begin reshaping everyday travel.
+                </p>
+            </div>
+
+            <div class="section-heading">
+
+                <div class="section-number">04</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        A NETWORK INTERRUPTED
+                    </p>
+
+                    <h2>
+                        COVID did not hit every transport mode
+                        in the same way.
+                    </h2>
+
+                    <p class="section-description">
+                        When everyday movement stopped, public transport patronage
+                        collapsed across Victoria. But the size of the fall — and the
+                        journey back — differed between trains, trams, buses and
+                        regional services.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-dark">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            How far did patronage move from pre-pandemic levels?
+                        </h3>
+
+                        <p>
+                            Each row compares monthly patronage with the same
+                            calendar month in 2019, removing much of the normal
+                            seasonal variation.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="horizon-key">
+
+                    <div class="key-item">
+                        <span class="key-block below-light"></span>
+                        <span>0–50% below 2019</span>
+                    </div>
+
+                    <div class="key-item">
+                        <span class="key-block below-dark"></span>
+                        <span>50–100% below</span>
+                    </div>
+
+                    <div class="key-item">
+                        <span class="key-block above-light"></span>
+                        <span>0–50% above 2019</span>
+                    </div>
+
+                    <div class="key-item">
+                        <span class="key-block above-dark"></span>
+                        <span>50%+ above</span>
+                    </div>
+
+                </div>
+
+
+                <div id="chart4"></div>
+
+
+                <div class="chart-insight horizon-explanation">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Orange indicates patronage below the corresponding month
+                        in 2019, while teal indicates patronage above it.
+                        Darker bands represent larger departures from the
+                        pre-pandemic baseline. Hover over the graph for the
+                        exact patronage and percentage change.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Victorian Department of Transport and Planning,
+                    Monthly public transport patronage by mode.
+                    Monthly patronage is compared with the corresponding
+                    calendar month in 2019.
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="recovery-race" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">05</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        THE RECOVERY RACE
+                    </p>
+
+                    <h2>
+                        Which modes recovered fastest?
+                    </h2>
+
+                    <p class="section-description">
+                        The pandemic affected every part of Victoria's public
+                        transport network, but recovery did not happen at the
+                        same speed. Ranking each mode against its own
+                        pre-pandemic patronage reveals which services regained
+                        passengers most quickly.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            The changing recovery ranking of Victoria's transport modes
+                        </h3>
+
+                        <p>
+                            Rank is based on annual patronage relative to the same
+                            calendar months in 2019. First place represents the
+                            strongest recovery.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="chart5"></div>
+
+
+                <div class="recovery-scale">
+
+                    <div class="recovery-scale-item">
+
+                        <span class="recovery-number">
+                            100
+                        </span>
+
+                        <div>
+                            <strong>Back to baseline</strong>
+
+                            <p>
+                                Patronage matches the corresponding months in 2019.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="recovery-scale-item">
+
+                        <span class="recovery-number">
+                            80
+                        </span>
+
+                        <div>
+                            <strong>20% below</strong>
+
+                            <p>
+                                Patronage remains below its pre-pandemic level.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="recovery-scale-item">
+
+                        <span class="recovery-number">
+                            120
+                        </span>
+
+                        <div>
+                            <strong>20% above</strong>
+
+                            <p>
+                                Patronage has exceeded its 2019 level.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Follow a coloured line from left to right. Moving upward
+                        means that mode has improved its recovery ranking relative
+                        to the others; moving downward means other modes have
+                        recovered more strongly.
+                        Hover over any point to see the exact recovery index.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Victorian Department of Transport and Planning,
+                    Monthly public transport patronage by mode.
+                    Recovery is calculated relative to the corresponding
+                    calendar months in 2019.
+                </p>
+
+                <p class="chart-note">
+                    Note: 2026 represents the months available in the source dataset
+                    rather than a complete calendar year.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section id="connections" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">06</div>
+
+                <div>
+                    <p class="section-kicker">
+                        LONG-DISTANCE CONNECTIONS
+                    </p>
+
+                    <h2>
+                        The long-distance connections that public transport still makes possible.
+                    </h2>
+
+                    <p class="section-description">
+                        Public transport does not only shape movement within cities.
+                        Rail, coach and other non-air public transport continue to
+                        connect major Australian capitals, though some corridors are
+                        much busier than others.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-large">
+
+                <div class="chart-header">
+                    <div>
+                        <h3>
+                            Inter-capital passenger movements by city pair
+                        </h3>
+
+                        <p>
+                            Line thickness represents the number of passenger movements
+                            between major capital-city pairs using rail, coach and other
+                            non-air public transport. Change the financial year to compare
+                            pre-pandemic, pandemic and recovery patterns.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div id="chart6"></div>
+
+
+                <div class="chart-insight">
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Each line connects a pair of capitals. Thicker and darker lines
+                        indicate more passenger movements. The flows are undirected,
+                        so each connection represents total movement between the two cities
+                        rather than one-way trips.
+                    </p>
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Bureau of Infrastructure and Transport Research Economics,
+                    Australian Infrastructure and Transport Statistics Yearbook 2025,
+                    Table 2.2d: Inter-capital city passenger travel by city pair —
+                    Rail, Coach and Other.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section id="daytype-distribution" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">07</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        WHEN ROUTINE CHANGES
+                    </p>
+
+                    <h2>
+                        School holidays reshape the weekday commute.
+                    </h2>
+
+                    <p class="section-description">
+                        A normal weekday, a school-holiday weekday and a weekend
+                        create very different demand conditions. Looking beyond
+                        averages reveals how much patronage varies under each type
+                        of day — and whether that effect is the same across modes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-large">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            How predictable is demand on different kinds of days?
+                        </h3>
+
+                        <p>
+                            Each box summarises average daily patronage observations
+                            from 2023 to 2025. Compare the centre and spread of each
+                            distribution to see how travel changes between normal
+                            weekdays, school holidays and weekends.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="daytype-key">
+
+                    <div class="daytype-key-item">
+                        <span class="daytype-colour normal-day"></span>
+                        <span>Normal weekday</span>
+                    </div>
+
+                    <div class="daytype-key-item">
+                        <span class="daytype-colour holiday-day"></span>
+                        <span>School holiday weekday</span>
+                    </div>
+
+                    <div class="daytype-key-item">
+                        <span class="daytype-colour weekend-day"></span>
+                        <span>Weekend</span>
+                    </div>
+
+                </div>
+
+
+                <div id="chart7"></div>
+
+
+                <div class="boxplot-guide">
+
+                    <div class="boxplot-mini">
+
+                        <span class="whisker"></span>
+                        <span class="box-example">
+                            <span class="median-example"></span>
+                        </span>
+                        <span class="whisker"></span>
+
+                    </div>
+
+                    <p>
+                        The box shows the middle 50% of observations, the dark
+                        line marks the median and the whiskers show the typical
+                        range. Individual points beyond the whiskers represent
+                        unusually high or low observations.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Compare the three boxes within each transport mode.
+                        A box further to the right represents higher typical
+                        patronage. Wider boxes and longer whiskers indicate
+                        greater variation in demand. Each mode uses its own
+                        horizontal scale so that its distribution remains visible.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Victorian Department of Transport and Planning,
+                    Monthly average patronage by day type and by mode.
+                    Visualisation uses observations from 2023–2025.
+                </p>
+
+            </div>
+
+        </section>
+
+        <section id="mode-mix-over-time" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">08</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        A CHANGING MIX
+                    </p>
+
+                    <h2>
+                        The mix of public transport changed after 2020.
+                    </h2>
+
+                    <p class="section-description">
+                        COVID did more than reduce the number of passengers.
+                        It changed the balance between different forms of public
+                        transport. Looking at each mode as a share of the network
+                        reveals which parts of Victoria's system became relatively
+                        more or less important.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-large">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            Victoria's public transport mix, month by month
+                        </h3>
+
+                        <p>
+                            Each coloured stream represents one transport mode.
+                            Stream thickness shows its share of total public transport
+                            patronage during that month rather than its raw number
+                            of passengers.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="chart8"></div>
+
+
+                <div class="streamgraph-guide">
+
+                    <div class="stream-example">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Look at the thickness of each coloured band rather than its
+                        vertical position. A wider band means that mode accounted
+                        for a larger share of public transport use during that month.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Follow one colour from left to right to track how that mode's
+                        share changes through time. Because every month is normalised
+                        to the same total, changes in band width represent changes
+                        in the transport mix rather than changes in the overall number
+                        of passengers.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Victorian Department of Transport and Planning,
+                    Monthly public transport patronage by mode.
+                    Values are expressed as each mode's share of total monthly
+                    patronage.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+        <div>
+            <strong>Australia in Motion</strong>
+            <p>FIT3179 Data Visualisation 2 • 2026</p>
+        </div>
+
+        <div>
+            <p>Data: BITRE • Transport Victoria</p>
+            <p>Created by Alaric Sim</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+
+</body>
+</html>

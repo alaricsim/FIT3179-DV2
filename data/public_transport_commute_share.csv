@@ -1,0 +1,73 @@
+state_year,state,abbr,census_year,public_transport,one_method_commuters,public_transport_share
+New South Wales|1981,New South Wales,NSW,1981,256812,1733384,14.82
+New South Wales|1986,New South Wales,NSW,1986,225068,1735415,12.97
+New South Wales|1991,New South Wales,NSW,1991,211372,1743042,12.13
+New South Wales|1996,New South Wales,NSW,1996,225515,1956167,11.53
+New South Wales|2001,New South Wales,NSW,2001,249096,2115070,11.78
+New South Wales|2006,New South Wales,NSW,2006,265113,2288899,11.58
+New South Wales|2011,New South Wales,NSW,2011,317806,2500165,12.71
+New South Wales|2016,New South Wales,NSW,2016,397173,2710442,14.65
+New South Wales|2021,New South Wales,NSW,2021,147493,2019841,7.3
+Victoria|1981,Victoria,VIC,1981,157446,1327067,11.86
+Victoria|1986,Victoria,VIC,1986,134654,1375623,9.79
+Victoria|1991,Victoria,VIC,1991,106427,1334828,7.97
+Victoria|1996,Victoria,VIC,1996,103778,1470290,7.06
+Victoria|2001,Victoria,VIC,2001,119408,1627980,7.33
+Victoria|2006,Victoria,VIC,2006,143412,1792377,8.0
+Victoria|2011,Victoria,VIC,2011,190018,2010699,9.45
+Victoria|2016,Victoria,VIC,2016,238249,2193484,10.86
+Victoria|2021,Victoria,VIC,2021,138871,1966609,7.06
+Queensland|1981,Queensland,QLD,1981,53762,710024,7.57
+Queensland|1986,Queensland,QLD,1986,59836,810862,7.38
+Queensland|1991,Queensland,QLD,1991,55908,880465,6.35
+Queensland|1996,Queensland,QLD,1996,62621,1087632,5.76
+Queensland|2001,Queensland,QLD,2001,68732,1218154,5.64
+Queensland|2006,Queensland,QLD,2006,91302,1452013,6.29
+Queensland|2011,Queensland,QLD,2011,113051,1633038,6.92
+Queensland|2016,Queensland,QLD,2016,110920,1727675,6.42
+Queensland|2021,Queensland,QLD,2021,100393,1801535,5.57
+South Australia|1981,South Australia,SA,1981,49234,437169,11.26
+South Australia|1986,South Australia,SA,1986,41952,459483,9.13
+South Australia|1991,South Australia,SA,1991,33062,438800,7.53
+South Australia|1996,South Australia,SA,1996,27567,462500,5.96
+South Australia|2001,South Australia,SA,2001,28282,497367,5.69
+South Australia|2006,South Australia,SA,2006,36140,549877,6.57
+South Australia|2011,South Australia,SA,2011,39880,593025,6.72
+South Australia|2016,South Australia,SA,2016,41548,605387,6.86
+South Australia|2021,South Australia,SA,2021,44458,659237,6.74
+Western Australia|1981,Western Australia,WA,1981,37945,443881,8.55
+Western Australia|1986,Western Australia,WA,1986,36629,454432,8.06
+Western Australia|1991,Western Australia,WA,1991,33026,483909,6.82
+Western Australia|1996,Western Australia,WA,1996,33163,584680,5.67
+Western Australia|2001,Western Australia,WA,2001,34294,638281,5.37
+Western Australia|2006,Western Australia,WA,2006,47087,735215,6.4
+Western Australia|2011,Western Australia,WA,2011,65538,858936,7.63
+Western Australia|2016,Western Australia,WA,2016,71026,920168,7.72
+Western Australia|2021,Western Australia,WA,2021,96782,1029448,9.4
+Tasmania|1981,Tasmania,TAS,1981,11166,138794,8.05
+Tasmania|1986,Tasmania,TAS,1986,8622,143234,6.02
+Tasmania|1991,Tasmania,TAS,1991,5924,130964,4.52
+Tasmania|1996,Tasmania,TAS,1996,5342,141235,3.78
+Tasmania|2001,Tasmania,TAS,2001,4290,142372,3.01
+Tasmania|2006,Tasmania,TAS,2006,5156,162474,3.17
+Tasmania|2011,Tasmania,TAS,2011,5672,173577,3.27
+Tasmania|2016,Tasmania,TAS,2016,5362,174967,3.06
+Tasmania|2021,Tasmania,TAS,2021,8052,202434,3.98
+Northern Territory|1981,Northern Territory,NT,1981,2907,43086,6.75
+Northern Territory|1986,Northern Territory,NT,1986,2429,52706,4.61
+Northern Territory|1991,Northern Territory,NT,1991,2389,51597,4.63
+Northern Territory|1996,Northern Territory,NT,1996,2887,64719,4.46
+Northern Territory|2001,Northern Territory,NT,2001,2711,70101,3.87
+Northern Territory|2006,Northern Territory,NT,2006,3082,71925,4.29
+Northern Territory|2011,Northern Territory,NT,2011,3306,82569,4.0
+Northern Territory|2016,Northern Territory,NT,2016,4966,87250,5.69
+Northern Territory|2021,Northern Territory,NT,2021,2918,91122,3.2
+Australian Capital Territory|1981,Australian Capital Territory,ACT,1981,8642,87575,9.87
+Australian Capital Territory|1986,Australian Capital Territory,ACT,1986,9614,106570,9.02
+Australian Capital Territory|1991,Australian Capital Territory,ACT,1991,9680,109024,8.88
+Australian Capital Territory|1996,Australian Capital Territory,ACT,1996,8638,120623,7.16
+Australian Capital Territory|2001,Australian Capital Territory,ACT,2001,7506,132117,5.68
+Australian Capital Territory|2006,Australian Capital Territory,ACT,2006,10374,145797,7.12
+Australian Capital Territory|2011,Australian Capital Territory,ACT,2011,11208,163325,6.86
+Australian Capital Territory|2016,Australian Capital Territory,ACT,2016,12462,173497,7.18
+Australian Capital Territory|2021,Australian Capital Territory,ACT,2021,15614,195090,8.0

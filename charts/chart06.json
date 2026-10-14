@@ -1,0 +1,247 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Flow map showing inter-capital public transport passenger movements between major Australian city pairs.",
+
+  "width": "container",
+  "height": 620,
+
+  "projection": {
+    "type": "conicConformal",
+    "center": [134, -28],
+    "parallels": [-18, -36]
+  },
+
+  "params": [
+    {
+      "name": "SelectedYear",
+      "value": "2023-24",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2018-19",
+          "2019-20",
+          "2020-21",
+          "2021-22",
+          "2022-23",
+          "2023-24"
+        ],
+        "name": "Financial year: "
+      }
+    }
+  ],
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+
+      "transform": [
+        {
+          "filter": "datum.id == 36"
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e7e3d8",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/intercapital_public_transport_flows.csv"
+      },
+
+      "transform": [
+        {
+          "filter": "datum.financial_year == SelectedYear"
+        }
+      ],
+
+      "mark": {
+        "type": "rule",
+        "color": "#e85d3f",
+        "strokeCap": "round"
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "origin_lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "origin_lat",
+          "type": "quantitative"
+        },
+
+        "longitude2": {
+          "field": "destination_lon"
+        },
+
+        "latitude2": {
+          "field": "destination_lat"
+        },
+
+        "size": {
+          "field": "passenger_thousands",
+          "type": "quantitative",
+          "title": "Passenger movements (thousand)",
+          "scale": {
+            "domain": [0, 900],
+            "range": [2, 20]
+          },
+          "legend": {
+            "orient": "bottom-right",
+            "values": [100, 300, 600, 900],
+            "format": ".0f",
+            "labelExpr": "datum.label + 'k'",
+            "titleFontSize": 12,
+            "labelFontSize": 11
+          }
+        },
+
+        "opacity": {
+          "field": "passenger_thousands",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 900],
+            "range": [0.25, 0.9]
+          },
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "origin",
+            "type": "nominal",
+            "title": "Origin"
+          },
+          {
+            "field": "destination",
+            "type": "nominal",
+            "title": "Destination"
+          },
+          {
+            "field": "financial_year",
+            "type": "nominal",
+            "title": "Financial year"
+          },
+          {
+            "field": "passenger_thousands",
+            "type": "quantitative",
+            "title": "Passenger movements (thousand)",
+            "format": ",.1f"
+          },
+          {
+            "field": "passenger_millions",
+            "type": "quantitative",
+            "title": "Passenger movements (million)",
+            "format": ".3f"
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"city": "Sydney", "lon": 151.2093, "lat": -33.8688},
+          {"city": "Melbourne", "lon": 144.9631, "lat": -37.8136},
+          {"city": "Brisbane", "lon": 153.0251, "lat": -27.4698},
+          {"city": "Canberra", "lon": 149.1300, "lat": -35.2809},
+          {"city": "Adelaide", "lon": 138.6007, "lat": -34.9285}
+        ]
+      },
+
+      "mark": {
+        "type": "circle",
+        "size": 180,
+        "color": "#132a2f",
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+
+        "tooltip": [
+          {
+            "field": "city",
+            "type": "nominal",
+            "title": "Capital city"
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {"city": "Sydney", "lon": 152.15, "lat": -33.45},
+          {"city": "Melbourne", "lon": 145.25, "lat": -38.35},
+          {"city": "Brisbane", "lon": 153.55, "lat": -27.05},
+          {"city": "Canberra", "lon": 150.05, "lat": -35.75},
+          {"city": "Adelaide", "lon": 138.00, "lat": -35.35}
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": 700,
+        "color": "#132a2f"
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "lon",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "lat",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "city",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter",
+
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#637174",
+      "titleColor": "#132a2f"
+    }
+  }
+}

@@ -1,0 +1,216 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "description": "Heatmap showing a typical week of average daily Victorian public transport patronage by month and day of week.",
+
+  "width": "container",
+  "height": 470,
+
+  "params": [
+    {
+      "name": "SelectedMode",
+      "value": "Metro Train",
+      "bind": {
+        "input": "select",
+        "options": [
+          "Metro Train",
+          "Tram",
+          "Metro Bus",
+          "Regional Train",
+          "Regional Bus"
+        ],
+        "name": "Transport mode: "
+      }
+    },
+
+    {
+      "name": "SelectedYear",
+      "value": "2025",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2018",
+          "2019",
+          "2020",
+          "2021",
+          "2022",
+          "2023",
+          "2024",
+          "2025",
+          "2026"
+        ],
+        "name": "Year: "
+      }
+    }
+  ],
+
+  "data": {
+    "url": "data/victoria_daytype_patronage.csv"
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.Mode == 'MetroTrain' ? 'Metro Train' : datum.Mode == 'MetroBus' ? 'Metro Bus' : datum.Mode == 'RegionalTrain' ? 'Regional Train' : datum.Mode == 'RegionalBus' ? 'Regional Bus' : datum.Mode",
+      "as": "ModeDisplay"
+    },
+
+    {
+      "filter": "datum.ModeDisplay == SelectedMode"
+    },
+
+    {
+      "filter": "toString(datum.Year) == SelectedYear"
+    },
+
+    {
+      "filter": "(datum.Day_type == 'Normal Weekday' && datum.Day_of_week != 'Saturday' && datum.Day_of_week != 'Sunday') || datum.Day_type == 'Weekend'"
+    },
+
+    {
+      "calculate": "datum.Day_of_week == 'Saturday' || datum.Day_of_week == 'Sunday' ? 'Weekend' : 'Normal weekday'",
+      "as": "DayCategory"
+    }
+  ],
+
+  "mark": {
+    "type": "rect",
+    "cornerRadius": 4,
+    "stroke": "#f4f1e9",
+    "strokeWidth": 3
+  },
+
+  "encoding": {
+    "x": {
+      "field": "Day_of_week",
+      "type": "ordinal",
+
+      "sort": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+
+      "title": null,
+
+      "axis": {
+        "labelAngle": 0,
+        "labelFontSize": 12,
+        "labelFontWeight": 600,
+        "labelColor": "#132a2f",
+        "labelPadding": 10,
+        "domain": false,
+        "ticks": false
+      }
+    },
+
+    "y": {
+      "field": "Month_name",
+      "type": "ordinal",
+
+      "sort": [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec"
+      ],
+
+      "title": null,
+
+      "axis": {
+        "labelFontSize": 12,
+        "labelColor": "#132a2f",
+        "labelPadding": 12,
+        "domain": false,
+        "ticks": false
+      }
+    },
+
+    "color": {
+      "field": "Pax_daily",
+      "type": "quantitative",
+
+      "title": "Average daily patronage",
+
+      "scale": {
+        "scheme": "yelloworangered",
+        "zero": false
+      },
+
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 300,
+        "gradientThickness": 12,
+        "titleFontSize": 12,
+        "labelFontSize": 11,
+        "format": "~s"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "Month_name",
+        "type": "nominal",
+        "title": "Month"
+      },
+
+      {
+        "field": "Day_of_week",
+        "type": "nominal",
+        "title": "Day"
+      },
+
+      {
+        "field": "ModeDisplay",
+        "type": "nominal",
+        "title": "Transport mode"
+      },
+
+      {
+        "field": "DayCategory",
+        "type": "nominal",
+        "title": "Day type"
+      },
+
+      {
+        "field": "Pax_daily",
+        "type": "quantitative",
+        "title": "Avg. daily boardings",
+        "format": ",.0f"
+      }
+    ]
+  },
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter",
+
+    "axis": {
+      "grid": false
+    },
+
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#637174",
+      "titleColor": "#132a2f"
+    }
+  }
+}

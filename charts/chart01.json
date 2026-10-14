@@ -1,0 +1,207 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Proportional symbol map showing annual public transport patronage across Australian capital cities.",
+
+  "width": "container",
+  "height": 600,
+
+  "projection": {
+    "type": "conicConformal",
+    "center": [134, -28],
+    "parallels": [-18, -36]
+  },
+
+  "params": [
+    {
+      "name": "SelectedYear",
+      "value": "2024-25",
+      "bind": {
+        "input": "select",
+        "options": [
+          "2018-19",
+          "2019-20",
+          "2020-21",
+          "2021-22",
+          "2022-23",
+          "2023-24",
+          "2024-25"
+        ],
+        "name": "Financial year: "
+      }
+    }
+  ],
+
+  "layer": [
+    {
+      "data": {
+        "url": "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json",
+        "format": {
+          "type": "topojson",
+          "feature": "countries"
+        }
+      },
+
+      "transform": [
+        {
+          "filter": "datum.id == 36"
+        }
+      ],
+
+      "mark": {
+        "type": "geoshape",
+        "fill": "#e7e3d8",
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/capital_city_patronage.csv"
+      },
+
+      "transform": [
+        {
+          "filter": "datum.financial_year == SelectedYear"
+        }
+      ],
+
+      "mark": {
+        "type": "circle",
+        "color": "#e85d3f",
+        "opacity": 0.82,
+        "stroke": "#ffffff",
+        "strokeWidth": 1.5
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+
+        "size": {
+          "field": "total",
+          "type": "quantitative",
+          "title": "Passenger trips (million)",
+          "scale": {
+            "domain": [0, 800],
+            "range": [80, 6000]
+          },
+
+          "legend": {
+            "title": "Annual patronage",
+            "orient": "bottom-right",
+            "values": [100, 300, 700],
+            "format": ".0f",
+            "labelExpr": "datum.label + 'm'"
+          }
+        },
+
+        "tooltip": [
+          {
+            "field": "city",
+            "type": "nominal",
+            "title": "Capital city"
+          },
+          {
+            "field": "financial_year",
+            "type": "nominal",
+            "title": "Financial year"
+          },
+          {
+            "field": "total",
+            "type": "quantitative",
+            "title": "Total patronage",
+            "format": ".1f"
+          },
+          {
+            "field": "heavy_rail",
+            "type": "quantitative",
+            "title": "Heavy rail",
+            "format": ".1f"
+          },
+          {
+            "field": "light_rail",
+            "type": "quantitative",
+            "title": "Light rail / tram",
+            "format": ".1f"
+          },
+          {
+            "field": "bus",
+            "type": "quantitative",
+            "title": "Bus",
+            "format": ".1f"
+          },
+          {
+            "field": "ferry",
+            "type": "quantitative",
+            "title": "Ferry",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "data": {
+        "url": "data/capital_city_patronage.csv"
+      },
+
+      "transform": [
+        {
+          "filter": "datum.financial_year == SelectedYear"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+        "dy": -20,
+        "fontSize": 12,
+        "fontWeight": 600,
+        "color": "#132a2f"
+      },
+
+      "encoding": {
+        "longitude": {
+          "field": "longitude",
+          "type": "quantitative"
+        },
+
+        "latitude": {
+          "field": "latitude",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "city",
+          "type": "nominal"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter",
+
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#637174",
+      "titleColor": "#132a2f",
+      "titleFontSize": 12,
+      "labelFontSize": 11
+    }
+  }
+}

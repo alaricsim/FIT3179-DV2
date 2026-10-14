@@ -1,0 +1,374 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "description": "Bump chart ranking Victorian public transport modes by annual patronage recovery relative to corresponding months in 2019.",
+
+  "width": 920,
+  "height": 430,
+
+  "data": {
+    "url": "data/monthly_public_transport_patronage_by_mode.csv"
+  },
+
+  "transform": [
+    {
+      "fold": [
+        "Metropolitan train",
+        "Metropolitan tram",
+        "Metropolitan bus",
+        "V/Line train",
+        "V/Line coach",
+        "Regional bus"
+      ],
+      "as": [
+        "Mode",
+        "Patronage"
+      ]
+    },
+
+    {
+      "calculate": "datum.Mode == 'Metropolitan train' ? 'Metro Train' : datum.Mode == 'Metropolitan tram' ? 'Tram' : datum.Mode == 'Metropolitan bus' ? 'Metro Bus' : datum.Mode == 'V/Line train' ? 'V/Line Train' : datum.Mode == 'V/Line coach' ? 'V/Line Coach' : 'Regional Bus'",
+      "as": "ModeDisplay"
+    },
+
+    {
+      "calculate": "datum.Year == 2019 ? datum.Patronage : null",
+      "as": "BaselineCandidate"
+    },
+
+    {
+      "joinaggregate": [
+        {
+          "op": "mean",
+          "field": "BaselineCandidate",
+          "as": "Baseline2019"
+        }
+      ],
+      "groupby": [
+        "Mode",
+        "Month"
+      ]
+    },
+
+    {
+      "calculate": "(datum.Patronage / datum.Baseline2019) * 100",
+      "as": "MonthlyRecovery"
+    },
+
+    {
+      "filter": "datum.Year >= 2020"
+    },
+
+    {
+      "aggregate": [
+        {
+          "op": "mean",
+          "field": "MonthlyRecovery",
+          "as": "AnnualRecovery"
+        }
+      ],
+      "groupby": [
+        "Year",
+        "ModeDisplay"
+      ]
+    },
+
+    {
+      "window": [
+        {
+          "op": "rank",
+          "as": "Rank"
+        }
+      ],
+
+      "sort": [
+        {
+          "field": "AnnualRecovery",
+          "order": "descending"
+        }
+      ],
+
+      "groupby": [
+        "Year"
+      ]
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "strokeWidth": 3,
+        "interpolate": "monotone"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+
+          "title": null,
+
+          "axis": {
+            "labelAngle": 0,
+            "labelFontSize": 12,
+            "labelFontWeight": 600,
+            "labelColor": "#637174",
+            "labelPadding": 12,
+
+            "domain": false,
+            "ticks": false
+          }
+        },
+
+        "y": {
+          "field": "Rank",
+          "type": "quantitative",
+
+          "title": "Recovery rank",
+
+          "scale": {
+            "domain": [
+              6.3,
+              0.7
+            ]
+          },
+
+          "axis": {
+            "values": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6
+            ],
+
+            "labelExpr": "datum.value == 1 ? '1st' : datum.value == 2 ? '2nd' : datum.value == 3 ? '3rd' : datum.value + 'th'",
+
+            "labelFontSize": 12,
+            "labelFontWeight": 700,
+            "labelColor": "#132a2f",
+
+            "titleFontSize": 12,
+            "titleColor": "#637174",
+            "titlePadding": 18,
+
+            "domain": false,
+            "ticks": false,
+
+            "grid": true,
+            "gridColor": "#132a2f",
+            "gridOpacity": 0.08
+          }
+        },
+
+        "color": {
+          "field": "ModeDisplay",
+          "type": "nominal",
+
+          "title": null,
+
+          "scale": {
+            "domain": [
+              "Metro Train",
+              "Tram",
+              "Metro Bus",
+              "V/Line Train",
+              "V/Line Coach",
+              "Regional Bus"
+            ],
+
+            "range": [
+              "#e85d3f",
+              "#d89b2b",
+              "#3f8f8c",
+              "#4b6f9e",
+              "#8165a8",
+              "#73875d"
+            ]
+          },
+
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "columns": 3,
+
+            "labelFontSize": 11,
+            "labelColor": "#637174",
+
+            "symbolStrokeWidth": 3,
+            "symbolSize": 150
+          }
+        },
+
+        "detail": {
+          "field": "ModeDisplay"
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+
+        "filled": true,
+
+        "size": 110,
+
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "Rank",
+          "type": "quantitative"
+        },
+
+        "color": {
+          "field": "ModeDisplay",
+          "type": "nominal",
+
+          "scale": {
+            "domain": [
+              "Metro Train",
+              "Tram",
+              "Metro Bus",
+              "V/Line Train",
+              "V/Line Coach",
+              "Regional Bus"
+            ],
+
+            "range": [
+              "#e85d3f",
+              "#d89b2b",
+              "#3f8f8c",
+              "#4b6f9e",
+              "#8165a8",
+              "#73875d"
+            ]
+          },
+
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "ModeDisplay",
+            "type": "nominal",
+            "title": "Transport mode"
+          },
+
+          {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year"
+          },
+
+          {
+            "field": "Rank",
+            "type": "quantitative",
+            "title": "Recovery rank",
+            "format": ".0f"
+          },
+
+          {
+            "field": "AnnualRecovery",
+            "type": "quantitative",
+            "title": "Recovery index",
+            "format": ".1f"
+          }
+        ]
+      }
+    },
+
+    {
+      "transform": [
+        {
+          "filter": "datum.Year == 2026"
+        }
+      ],
+
+      "mark": {
+        "type": "text",
+
+        "align": "left",
+        "baseline": "middle",
+
+        "dx": 12,
+
+        "font": "Inter",
+        "fontSize": 12,
+        "fontWeight": 700
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal"
+        },
+
+        "y": {
+          "field": "Rank",
+          "type": "quantitative"
+        },
+
+        "text": {
+          "field": "ModeDisplay"
+        },
+
+        "color": {
+          "field": "ModeDisplay",
+          "type": "nominal",
+
+          "scale": {
+            "domain": [
+              "Metro Train",
+              "Tram",
+              "Metro Bus",
+              "V/Line Train",
+              "V/Line Coach",
+              "Regional Bus"
+            ],
+
+            "range": [
+              "#e85d3f",
+              "#d89b2b",
+              "#3f8f8c",
+              "#4b6f9e",
+              "#8165a8",
+              "#73875d"
+            ]
+          },
+
+          "legend": null
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter",
+
+    "axis": {
+      "grid": false
+    },
+
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter"
+    }
+  }
+}

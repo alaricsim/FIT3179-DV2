@@ -1,0 +1,151 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "description": "Choropleth map showing the share of one-method commuters using public transport to travel to work across Australian states and territories.",
+
+  "width": "container",
+  "height": 560,
+
+  "projection": {
+    "type": "conicEqualArea",
+    "center": [134, -28],
+    "parallels": [-18, -36]
+  },
+
+  "params": [
+    {
+      "name": "SelectedCensusYear",
+      "value": "2021",
+      "bind": {
+        "input": "select",
+        "options": [
+          "1981",
+          "1986",
+          "1991",
+          "1996",
+          "2001",
+          "2006",
+          "2011",
+          "2016",
+          "2021"
+        ],
+        "name": "Census year: "
+      }
+    }
+  ],
+
+  "data": {
+    "url": "https://raw.githubusercontent.com/rowanhogan/australian-states/master/states.min.geojson",
+    "format": {
+      "type": "json",
+      "property": "features"
+    }
+  },
+
+  "transform": [
+    {
+      "calculate": "datum.properties.STATE_NAME + '|' + SelectedCensusYear",
+      "as": "state_year"
+    },
+
+    {
+      "lookup": "state_year",
+      "from": {
+        "data": {
+          "url": "data/public_transport_commute_share.csv"
+        },
+        "key": "state_year",
+        "fields": [
+          "state",
+          "abbr",
+          "census_year",
+          "public_transport",
+          "one_method_commuters",
+          "public_transport_share"
+        ]
+      }
+    }
+  ],
+
+  "mark": {
+    "type": "geoshape",
+    "stroke": "#ffffff",
+    "strokeWidth": 1.5
+  },
+
+  "encoding": {
+    "color": {
+      "field": "public_transport_share",
+      "type": "quantitative",
+
+      "title": "Public transport share (%)",
+
+      "scale": {
+        "scheme": "tealblues",
+        "domain": [0, 12]
+      },
+
+      "legend": {
+        "orient": "bottom",
+        "direction": "horizontal",
+        "gradientLength": 300,
+        "gradientThickness": 12,
+        "titleFontSize": 12,
+        "labelFontSize": 11,
+        "format": ".0f"
+      }
+    },
+
+    "tooltip": [
+      {
+        "field": "state",
+        "type": "nominal",
+        "title": "State / territory"
+      },
+
+      {
+        "field": "census_year",
+        "type": "ordinal",
+        "title": "Census year"
+      },
+
+      {
+        "field": "public_transport_share",
+        "type": "quantitative",
+        "title": "Public transport share",
+        "format": ".1f"
+      },
+
+      {
+        "field": "public_transport",
+        "type": "quantitative",
+        "title": "Public transport commuters",
+        "format": ",.0f"
+      },
+
+      {
+        "field": "one_method_commuters",
+        "type": "quantitative",
+        "title": "One-method commuters",
+        "format": ",.0f"
+      }
+    ]
+  },
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter",
+
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+      "labelColor": "#637174",
+      "titleColor": "#132a2f"
+    }
+  }
+}

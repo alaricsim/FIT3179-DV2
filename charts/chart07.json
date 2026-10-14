@@ -1,0 +1,211 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "description": "Box plots comparing the distribution of average daily public transport patronage across normal weekdays, school-holiday weekdays and weekends in Victoria.",
+
+  "data": {
+    "url": "data/victoria_daytype_patronage.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "Year": "number",
+        "Month": "number",
+        "Pax_daily": "number"
+      }
+    }
+  },
+
+  "transform": [
+    {
+      "filter": "datum.Year >= 2023 && datum.Year <= 2025"
+    },
+
+    {
+      "calculate": "datum.Mode == 'MetroTrain' ? 'Metro Train' : datum.Mode == 'MetroBus' ? 'Metro Bus' : datum.Mode == 'RegionalTrain' ? 'Regional Train' : datum.Mode == 'RegionalBus' ? 'Regional Bus' : datum.Mode",
+      "as": "ModeDisplay"
+    },
+
+    {
+      "calculate": "datum.Day_type == 'Normal Weekday' ? 1 : datum.Day_type == 'School Holiday Weekday' ? 2 : 3",
+      "as": "DayTypeOrder"
+    }
+  ],
+
+  "facet": {
+    "row": {
+      "field": "ModeDisplay",
+      "type": "nominal",
+
+      "sort": [
+        "Metro Train",
+        "Tram",
+        "Metro Bus",
+        "Regional Train",
+        "Regional Bus"
+      ],
+
+      "title": null,
+
+      "header": {
+        "labelAngle": 0,
+
+        "labelAlign": "left",
+        "labelAnchor": "start",
+
+        "labelFont": "Inter",
+        "labelFontSize": 13,
+        "labelFontWeight": 700,
+
+        "labelColor": "#132a2f",
+
+        "labelPadding": 12
+      }
+    }
+  },
+
+  "spec": {
+    "width": 760,
+    "height": 115,
+
+    "mark": {
+      "type": "boxplot",
+
+      "extent": 1.5,
+
+      "size": 40,
+
+      "median": {
+        "color": "#132a2f",
+        "strokeWidth": 2
+      },
+
+      "box": {
+        "stroke": "#ffffff",
+        "strokeWidth": 1
+      },
+
+      "rule": {
+        "strokeWidth": 1.2
+      },
+
+      "ticks": {
+        "strokeWidth": 1.2
+      },
+
+      "outliers": {
+        "filled": true,
+        "size": 22,
+        "opacity": 0.45
+      }
+    },
+
+    "encoding": {
+      "x": {
+        "field": "Pax_daily",
+        "type": "quantitative",
+
+        "title": "Average daily patronage",
+
+        "axis": {
+          "format": "~s",
+
+          "labelFontSize": 11,
+          "labelColor": "#637174",
+
+          "titleFontSize": 11,
+          "titleColor": "#637174",
+
+          "titlePadding": 12,
+
+          "domain": false,
+
+          "grid": true,
+          "gridColor": "#132a2f",
+          "gridOpacity": 0.08
+        }
+      },
+
+      "y": {
+        "field": "Day_type",
+        "type": "nominal",
+
+        "sort": [
+          "Normal Weekday",
+          "School Holiday Weekday",
+          "Weekend"
+        ],
+
+        "title": null,
+
+        "axis": {
+          "labelFontSize": 11,
+          "labelFontWeight": 600,
+
+          "labelColor": "#132a2f",
+
+          "labelPadding": 10,
+
+          "domain": false,
+          "ticks": false
+        }
+      },
+
+      "color": {
+        "field": "Day_type",
+        "type": "nominal",
+
+        "title": null,
+
+        "scale": {
+          "domain": [
+            "Normal Weekday",
+            "School Holiday Weekday",
+            "Weekend"
+          ],
+
+          "range": [
+            "#355c7d",
+            "#e8a35b",
+            "#69a7a5"
+          ]
+        },
+
+        "legend": null
+      },
+
+      "tooltip": [
+        {
+          "field": "ModeDisplay",
+          "type": "nominal",
+          "title": "Transport mode"
+        },
+
+        {
+          "field": "Day_type",
+          "type": "nominal",
+          "title": "Day type"
+        }
+      ]
+    }
+  },
+
+  "resolve": {
+    "scale": {
+      "x": "independent"
+    }
+  },
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter",
+
+    "facet": {
+      "spacing": 22
+    }
+  }
+}

@@ -1,0 +1,332 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "description": "Normalised streamgraph showing the changing modal composition of Victorian public transport patronage over time.",
+
+  "width": 950,
+  "height": 460,
+
+  "data": {
+    "url": "data/monthly_public_transport_patronage_by_mode.csv",
+
+    "format": {
+      "type": "csv",
+
+      "parse": {
+        "Year": "number",
+        "Month": "number"
+      }
+    }
+  },
+
+  "transform": [
+    {
+      "fold": [
+        "Metropolitan train",
+        "Metropolitan tram",
+        "Metropolitan bus",
+        "V/Line train",
+        "V/Line coach",
+        "Regional bus"
+      ],
+
+      "as": [
+        "Mode",
+        "Patronage"
+      ]
+    },
+
+    {
+      "calculate": "datum.Mode == 'Metropolitan train' ? 'Metro Train' : datum.Mode == 'Metropolitan tram' ? 'Tram' : datum.Mode == 'Metropolitan bus' ? 'Metro Bus' : datum.Mode == 'V/Line train' ? 'V/Line Train' : datum.Mode == 'V/Line coach' ? 'V/Line Coach' : 'Regional Bus'",
+
+      "as": "ModeDisplay"
+    },
+
+    {
+      "calculate": "datetime(datum.Year, datum.Month - 1, 1)",
+
+      "as": "Date"
+    },
+
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "Patronage",
+          "as": "MonthlyTotal"
+        }
+      ],
+
+      "groupby": [
+        "Year",
+        "Month"
+      ]
+    },
+
+    {
+      "calculate": "datum.Patronage / datum.MonthlyTotal",
+
+      "as": "ModeShare"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+
+        "interpolate": "monotone",
+
+        "opacity": 0.9
+      },
+
+      "encoding": {
+        "x": {
+          "field": "Date",
+          "type": "temporal",
+
+          "title": null,
+
+          "axis": {
+            "format": "%Y",
+
+            "labelFontSize": 11,
+            "labelColor": "#637174",
+
+            "labelPadding": 10,
+
+            "domain": false,
+            "ticks": false,
+
+            "grid": false,
+
+            "values": [
+              {
+                "year": 2018,
+                "month": 1,
+                "date": 1
+              },
+              {
+                "year": 2019,
+                "month": 1,
+                "date": 1
+              },
+              {
+                "year": 2020,
+                "month": 1,
+                "date": 1
+              },
+              {
+                "year": 2021,
+                "month": 1,
+                "date": 1
+              },
+              {
+                "year": 2022,
+                "month": 1,
+                "date": 1
+              },
+              {
+                "year": 2023,
+                "month": 1,
+                "date": 1
+              },
+              {
+                "year": 2024,
+                "month": 1,
+                "date": 1
+              },
+              {
+                "year": 2025,
+                "month": 1,
+                "date": 1
+              },
+              {
+                "year": 2026,
+                "month": 1,
+                "date": 1
+              }
+            ]
+          }
+        },
+
+        "y": {
+          "field": "ModeShare",
+          "type": "quantitative",
+
+          "stack": "center",
+
+          "axis": null
+        },
+
+        "color": {
+          "field": "ModeDisplay",
+          "type": "nominal",
+
+          "title": "Transport mode",
+
+          "scale": {
+            "domain": [
+              "Metro Train",
+              "Tram",
+              "Metro Bus",
+              "V/Line Train",
+              "V/Line Coach",
+              "Regional Bus"
+            ],
+
+            "range": [
+              "#355c7d",
+              "#e85d3f",
+              "#d7a33c",
+              "#567f9f",
+              "#8d6ca8",
+              "#72a485"
+            ]
+          },
+
+          "legend": {
+            "orient": "bottom",
+
+            "direction": "horizontal",
+
+            "columns": 3,
+
+            "labelFontSize": 11,
+
+            "labelColor": "#637174",
+
+            "symbolSize": 150
+          }
+        },
+
+        "order": {
+          "field": "ModeDisplay",
+
+          "sort": "ascending"
+        },
+
+        "tooltip": [
+          {
+            "field": "Date",
+            "type": "temporal",
+            "title": "Month",
+            "format": "%B %Y"
+          },
+
+          {
+            "field": "ModeDisplay",
+            "type": "nominal",
+            "title": "Transport mode"
+          },
+
+          {
+            "field": "Patronage",
+            "type": "quantitative",
+            "title": "Monthly patronage",
+            "format": ",.0f"
+          },
+
+          {
+            "field": "ModeShare",
+            "type": "quantitative",
+            "title": "Share of patronage",
+            "format": ".1%"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "rule",
+
+        "color": "#132a2f",
+
+        "strokeWidth": 1,
+
+        "strokeDash": [
+          5,
+          5
+        ],
+
+        "opacity": 0.45
+      },
+
+      "encoding": {
+        "x": {
+          "datum": {
+            "year": 2020,
+            "month": 3,
+            "date": 1
+          }
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "date": "2020-03-01",
+            "label": "COVID-19 disruption"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+
+        "angle": 270,
+
+        "align": "left",
+
+        "baseline": "top",
+
+        "dx": 8,
+        "dy": -8,
+
+        "font": "Inter",
+
+        "fontSize": 11,
+
+        "fontWeight": 700,
+
+        "color": "#637174"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "date",
+          "type": "temporal"
+        },
+
+        "y": {
+          "value": 20
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter",
+
+    "legend": {
+      "labelFont": "Inter",
+      "titleFont": "Inter",
+
+      "labelColor": "#637174",
+      "titleColor": "#132a2f"
+    }
+  }
+}

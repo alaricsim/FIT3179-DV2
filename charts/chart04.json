@@ -1,0 +1,432 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "description": "Horizon graph comparing monthly Victorian public transport patronage with the same calendar month in 2019.",
+
+  "data": {
+    "url": "data/monthly_public_transport_patronage_by_mode.csv"
+  },
+
+  "transform": [
+    {
+      "fold": [
+        "Metropolitan train",
+        "Metropolitan tram",
+        "Metropolitan bus",
+        "V/Line train",
+        "V/Line coach",
+        "Regional bus"
+      ],
+      "as": [
+        "Mode",
+        "Patronage"
+      ]
+    },
+
+    {
+      "calculate": "datum.Mode == 'Metropolitan train' ? 'Metro Train' : datum.Mode == 'Metropolitan tram' ? 'Tram' : datum.Mode == 'Metropolitan bus' ? 'Metro Bus' : datum.Mode == 'V/Line train' ? 'V/Line Train' : datum.Mode == 'V/Line coach' ? 'V/Line Coach' : datum.Mode == 'Regional bus' ? 'Regional Bus' : datum.Mode",
+      "as": "ModeDisplay"
+    },
+
+    {
+      "calculate": "datetime(datum.Year, datum.Month - 1, 1)",
+      "as": "Date"
+    },
+
+    {
+      "calculate": "datum.Year == 2019 ? datum.Patronage : null",
+      "as": "BaselineCandidate"
+    },
+
+    {
+      "joinaggregate": [
+        {
+          "op": "mean",
+          "field": "BaselineCandidate",
+          "as": "Baseline2019"
+        }
+      ],
+      "groupby": [
+        "Mode",
+        "Month"
+      ]
+    },
+
+    {
+      "calculate": "(datum.Patronage / datum.Baseline2019 - 1) * 100",
+      "as": "ChangeFrom2019"
+    },
+
+    {
+      "calculate": "max(0, min(50, datum.ChangeFrom2019))",
+      "as": "PositiveBand1"
+    },
+
+    {
+      "calculate": "max(0, min(50, datum.ChangeFrom2019 - 50))",
+      "as": "PositiveBand2"
+    },
+
+    {
+      "calculate": "max(0, min(50, -datum.ChangeFrom2019))",
+      "as": "NegativeBand1"
+    },
+
+    {
+      "calculate": "max(0, min(50, -datum.ChangeFrom2019 - 50))",
+      "as": "NegativeBand2"
+    }
+  ],
+
+  "facet": {
+    "row": {
+      "field": "ModeDisplay",
+      "type": "nominal",
+
+      "sort": [
+        "Metro Train",
+        "Tram",
+        "Metro Bus",
+        "V/Line Train",
+        "V/Line Coach",
+        "Regional Bus"
+      ],
+
+      "title": null,
+
+      "header": {
+        "labelAngle": 0,
+        "labelAlign": "left",
+        "labelAnchor": "start",
+
+        "labelFont": "Inter",
+        "labelFontSize": 13,
+        "labelFontWeight": 700,
+
+        "labelColor": "#f4f1e9",
+
+        "labelPadding": 14
+      }
+    }
+  },
+
+  "spec": {
+    "width": 950,
+    "height": 72,
+
+    "layer": [
+      {
+        "mark": {
+          "type": "area",
+          "clip": true,
+          "interpolate": "monotone",
+
+          "color": "#73c7bd",
+          "opacity": 0.72
+        },
+
+        "encoding": {
+          "x": {
+            "field": "Date",
+            "type": "temporal",
+
+            "scale": {
+              "domain": [
+                {
+                  "year": 2018,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2026,
+                  "month": 7,
+                  "date": 1
+                }
+              ]
+            },
+
+            "axis": {
+              "title": null,
+
+              "format": "%Y",
+
+              "values": [
+                {
+                  "year": 2018,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2019,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2020,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2021,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2022,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2023,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2024,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2025,
+                  "month": 1,
+                  "date": 1
+                },
+                {
+                  "year": 2026,
+                  "month": 1,
+                  "date": 1
+                }
+              ],
+
+              "labelFontSize": 11,
+              "labelColor": "#c5d1d1",
+
+              "labelPadding": 8,
+
+              "domain": false,
+              "ticks": false,
+              "grid": false
+            }
+          },
+
+          "y": {
+            "field": "PositiveBand1",
+            "type": "quantitative",
+
+            "scale": {
+              "domain": [
+                0,
+                50
+              ]
+            },
+
+            "axis": null
+          }
+        }
+      },
+
+      {
+        "mark": {
+          "type": "area",
+          "clip": true,
+          "interpolate": "monotone",
+
+          "color": "#167f79",
+          "opacity": 0.95
+        },
+
+        "encoding": {
+          "x": {
+            "field": "Date",
+            "type": "temporal"
+          },
+
+          "y": {
+            "field": "PositiveBand2",
+            "type": "quantitative",
+
+            "scale": {
+              "domain": [
+                0,
+                50
+              ]
+            },
+
+            "axis": null
+          }
+        }
+      },
+
+      {
+        "mark": {
+          "type": "area",
+          "clip": true,
+          "interpolate": "monotone",
+
+          "color": "#e7a06f",
+          "opacity": 0.75
+        },
+
+        "encoding": {
+          "x": {
+            "field": "Date",
+            "type": "temporal"
+          },
+
+          "y": {
+            "field": "NegativeBand1",
+            "type": "quantitative",
+
+            "scale": {
+              "domain": [
+                0,
+                50
+              ]
+            },
+
+            "axis": null
+          }
+        }
+      },
+
+      {
+        "mark": {
+          "type": "area",
+          "clip": true,
+          "interpolate": "monotone",
+
+          "color": "#d84b35",
+          "opacity": 0.95
+        },
+
+        "encoding": {
+          "x": {
+            "field": "Date",
+            "type": "temporal"
+          },
+
+          "y": {
+            "field": "NegativeBand2",
+            "type": "quantitative",
+
+            "scale": {
+              "domain": [
+                0,
+                50
+              ]
+            },
+
+            "axis": null
+          }
+        }
+      },
+
+      {
+        "mark": {
+          "type": "rule",
+
+          "color": "#ffffff",
+          "opacity": 0.3,
+
+          "strokeWidth": 1,
+          "strokeDash": [
+            4,
+            4
+          ]
+        },
+
+        "encoding": {
+          "x": {
+            "datum": {
+              "year": 2020,
+              "month": 3,
+              "date": 1
+            }
+          }
+        }
+      },
+
+      {
+        "mark": {
+          "type": "point",
+
+          "opacity": 0,
+
+          "size": 200
+        },
+
+        "encoding": {
+          "x": {
+            "field": "Date",
+            "type": "temporal"
+          },
+
+          "y": {
+            "value": 32
+          },
+
+          "tooltip": [
+            {
+              "field": "ModeDisplay",
+              "type": "nominal",
+              "title": "Mode"
+            },
+
+            {
+              "field": "Date",
+              "type": "temporal",
+              "title": "Month",
+              "format": "%B %Y"
+            },
+
+            {
+              "field": "Patronage",
+              "type": "quantitative",
+              "title": "Monthly patronage",
+              "format": ",.0f"
+            },
+
+            {
+              "field": "Baseline2019",
+              "type": "quantitative",
+              "title": "Same month in 2019",
+              "format": ",.0f"
+            },
+
+            {
+              "field": "ChangeFrom2019",
+              "type": "quantitative",
+              "title": "Change from 2019 (%)",
+              "format": "+.1f"
+            }
+          ]
+        }
+      }
+    ]
+  },
+
+  "resolve": {
+    "scale": {
+      "x": "shared",
+      "y": "independent"
+    }
+  },
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter",
+
+    "facet": {
+      "spacing": 12
+    },
+
+    "axis": {
+      "grid": false
+    }
+  }
+}
