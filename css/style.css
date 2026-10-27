@@ -2075,6 +2075,38 @@ footer strong {
     line-height: 1.6;
 }
 
+/* =========================
+   SATISFACTION SMALL MULTIPLES
+   ========================= */
+
+#chart12 {
+    width: 100%;
+
+    margin-top: 24px;
+
+    overflow-x: auto;
+}
+
+#chart12 .vega-embed {
+    width: 100%;
+}
+
+
+/* optional explanatory note */
+
+.satisfaction-note {
+    margin-top: 24px;
+
+    padding-top: 20px;
+
+    border-top: 1px solid var(--line);
+
+    color: var(--muted);
+
+    font-size: 0.8rem;
+    line-height: 1.6;
+}
+
 
 /* miniature scatter diagram */
 

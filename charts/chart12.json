@@ -1,0 +1,209 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+  "description": "Small-multiple line charts showing changes in NSW public transport customer satisfaction by mode across survey waves.",
+  "data": {
+    "url": "data/nsw_customer_satisfaction_by_mode.csv",
+    "format": {
+      "type": "csv",
+      "parse": {
+        "satisfaction_pct": "number"
+      }
+    }
+  },
+  "transform": [
+    {
+      "calculate": "datum.survey_wave == 'Nov 2020' ? 1 : datum.survey_wave == 'May 2021' ? 2 : datum.survey_wave == 'May 2022' ? 3 : datum.survey_wave == 'Nov 2022' ? 4 : datum.survey_wave == 'May 2023' ? 5 : datum.survey_wave == 'Nov 2023' ? 6 : 7",
+      "as": "wave_order"
+    }
+  ],
+  "facet": {
+    "field": "mode",
+    "type": "nominal",
+    "columns": 3,
+    "sort": [
+      "Train",
+      "Bus",
+      "Ferry",
+      "Light rail",
+      "Metro"
+    ],
+    "header": {
+      "title": null,
+      "labelFont": "Inter",
+      "labelFontSize": 13,
+      "labelFontWeight": 700,
+      "labelColor": "#132a2f",
+      "labelPadding": 10
+    }
+  },
+  "spec": {
+    "width": 230,
+    "height": 160,
+    "layer": [
+      {
+        "mark": {
+          "type": "line",
+          "strokeWidth": 2.5,
+          "color": "#e85d3f"
+        },
+        "encoding": {
+          "x": {
+            "field": "survey_wave",
+            "type": "ordinal",
+            "sort": {
+              "field": "wave_order",
+              "order": "ascending"
+            },
+            "title": null,
+            "axis": {
+              "labelAngle": -35,
+              "labelFontSize": 9,
+              "labelColor": "#637174",
+              "labelPadding": 8,
+              "domain": false,
+              "ticks": false
+            }
+          },
+          "y": {
+            "field": "satisfaction_pct",
+            "type": "quantitative",
+            "title": "Satisfied (%)",
+            "scale": {
+              "domain": [
+                80,
+                100
+              ]
+            },
+            "axis": {
+              "values": [
+                80,
+                85,
+                90,
+                95,
+                100
+              ],
+              "labelExpr": "datum.value + '%'",
+              "labelFontSize": 9,
+              "labelColor": "#637174",
+              "titleFontSize": 10,
+              "titleColor": "#637174",
+              "titlePadding": 10,
+              "domain": false,
+              "ticks": false,
+              "grid": true,
+              "gridColor": "#132a2f",
+              "gridOpacity": 0.07
+            }
+          },
+          "order": {
+            "field": "wave_order",
+            "type": "quantitative"
+          }
+        }
+      },
+      {
+        "mark": {
+          "type": "point",
+          "filled": true,
+          "size": 65,
+          "color": "#e85d3f",
+          "stroke": "#ffffff",
+          "strokeWidth": 1.5
+        },
+        "encoding": {
+          "x": {
+            "field": "survey_wave",
+            "type": "ordinal",
+            "sort": {
+              "field": "wave_order",
+              "order": "ascending"
+            }
+          },
+          "y": {
+            "field": "satisfaction_pct",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                80,
+                100
+              ]
+            }
+          },
+          "tooltip": [
+            {
+              "field": "mode",
+              "type": "nominal",
+              "title": "Mode"
+            },
+            {
+              "field": "survey_wave",
+              "type": "nominal",
+              "title": "Survey wave"
+            },
+            {
+              "field": "satisfaction_pct",
+              "type": "quantitative",
+              "title": "Satisfied",
+              "format": ".0f"
+            }
+          ]
+        }
+      },
+      {
+        "transform": [
+          {
+            "filter": "datum.survey_wave == 'May 2024'"
+          }
+        ],
+        "mark": {
+          "type": "text",
+          "align": "left",
+          "baseline": "middle",
+          "dx": 8,
+          "dy": -9,
+          "font": "Inter",
+          "fontSize": 10,
+          "fontWeight": 700,
+          "color": "#132a2f"
+        },
+        "encoding": {
+          "x": {
+            "field": "survey_wave",
+            "type": "ordinal",
+            "sort": {
+              "field": "wave_order",
+              "order": "ascending"
+            }
+          },
+          "y": {
+            "field": "satisfaction_pct",
+            "type": "quantitative",
+            "scale": {
+              "domain": [
+                80,
+                100
+              ]
+            }
+          },
+          "text": {
+            "field": "satisfaction_pct",
+            "type": "quantitative",
+            "format": ".0f"
+          }
+        }
+      }
+    ]
+  },
+  "resolve": {
+    "scale": {
+      "y": "shared"
+    }
+  },
+  "config": {
+    "background": null,
+    "view": {
+      "stroke": null
+    },
+    "font": "Inter"
+  }
+}

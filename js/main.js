@@ -52,3 +52,8 @@ vegaEmbed("#chart11", "charts/chart11.json", {
     actions: false,
     renderer: "svg"
 }).catch(console.error);
+
+vegaEmbed("#chart12", "charts/chart12.json", {
+    actions: false,
+    renderer: "svg"
+}).catch(console.error);
