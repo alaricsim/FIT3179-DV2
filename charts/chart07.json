@@ -53,7 +53,7 @@
         "labelAnchor": "start",
 
         "labelFont": "Inter",
-        "labelFontSize": 13,
+        "labelFontSize": 15,
         "labelFontWeight": 700,
 
         "labelColor": "#132a2f",
@@ -111,10 +111,10 @@
         "axis": {
           "format": "~s",
 
-          "labelFontSize": 11,
+          "labelFontSize": 12,
           "labelColor": "#637174",
 
-          "titleFontSize": 11,
+          "titleFontSize": 12,
           "titleColor": "#637174",
 
           "titlePadding": 12,
@@ -140,7 +140,7 @@
         "title": null,
 
         "axis": {
-          "labelFontSize": 11,
+          "labelFontSize": 12,
           "labelFontWeight": 600,
 
           "labelColor": "#132a2f",

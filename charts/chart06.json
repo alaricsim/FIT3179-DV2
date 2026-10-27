@@ -56,38 +56,79 @@
 
     {
       "data": {
-        "url": "data/intercapital_public_transport_flows.csv"
+        "values": [
+          {"route": "Syd-Mel", "order": 1, "lon": 151.2093, "lat": -33.8688},
+          {"route": "Syd-Mel", "order": 2, "lon": 149.4, "lat": -36.6},
+          {"route": "Syd-Mel", "order": 3, "lon": 144.9631, "lat": -37.8136},
+          {"route": "Syd-Cbr", "order": 1, "lon": 151.2093, "lat": -33.8688},
+          {"route": "Syd-Cbr", "order": 2, "lon": 150.4, "lat": -34.4},
+          {"route": "Syd-Cbr", "order": 3, "lon": 149.13, "lat": -35.2809},
+          {"route": "Syd-Bne", "order": 1, "lon": 151.2093, "lat": -33.8688},
+          {"route": "Syd-Bne", "order": 2, "lon": 153.2, "lat": -30.4},
+          {"route": "Syd-Bne", "order": 3, "lon": 153.0251, "lat": -27.4698},
+          {"route": "Mel-Adl", "order": 1, "lon": 144.9631, "lat": -37.8136},
+          {"route": "Mel-Adl", "order": 2, "lon": 141.8, "lat": -36.5},
+          {"route": "Mel-Adl", "order": 3, "lon": 138.6007, "lat": -34.9285},
+          {"route": "Mel-Bne", "order": 1, "lon": 144.9631, "lat": -37.8136},
+          {"route": "Mel-Bne", "order": 2, "lon": 149.0, "lat": -32.5},
+          {"route": "Mel-Bne", "order": 3, "lon": 153.0251, "lat": -27.4698},
+          {"route": "Syd-Adl", "order": 1, "lon": 151.2093, "lat": -33.8688},
+          {"route": "Syd-Adl", "order": 2, "lon": 145.0, "lat": -34.0},
+          {"route": "Syd-Adl", "order": 3, "lon": 138.6007, "lat": -34.9285}
+        ]
       },
 
       "transform": [
         {
-          "filter": "datum.financial_year == SelectedYear"
+          "lookup": "route",
+          "from": {
+            "data": {
+              "url": "data/intercapital_public_transport_flows.csv",
+              "transform": [
+                {
+                  "filter": "datum.financial_year == SelectedYear"
+                }
+              ]
+            },
+            "key": "route",
+            "fields": [
+              "origin",
+              "destination",
+              "financial_year",
+              "passenger_thousands",
+              "passenger_millions"
+            ]
+          }
         }
       ],
 
       "mark": {
-        "type": "rule",
+        "type": "line",
+        "interpolate": "natural",
+        "strokeWidth": 2,
         "color": "#e85d3f",
         "strokeCap": "round"
       },
 
       "encoding": {
         "longitude": {
-          "field": "origin_lon",
+          "field": "lon",
           "type": "quantitative"
         },
 
         "latitude": {
-          "field": "origin_lat",
+          "field": "lat",
           "type": "quantitative"
         },
 
-        "longitude2": {
-          "field": "destination_lon"
+        "order": {
+          "field": "order",
+          "type": "quantitative"
         },
 
-        "latitude2": {
-          "field": "destination_lat"
+        "detail": {
+          "field": "route",
+          "type": "nominal"
         },
 
         "size": {
@@ -96,7 +137,7 @@
           "title": "Passenger movements (thousand)",
           "scale": {
             "domain": [0, 900],
-            "range": [2, 20]
+            "range": [1.5, 12]
           },
           "legend": {
             "orient": "bottom-right",
