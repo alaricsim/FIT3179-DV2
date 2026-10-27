@@ -28,7 +28,7 @@ vegaEmbed("#chart6", "charts/chart06.json", {
     renderer: "svg"
 }).catch(console.error);
 
-vegaEmbed("#chart7", "charts/chart07.json?v=4", {
+vegaEmbed("#chart7", "charts/chart07.json?v=5", {
     actions: false,
     renderer: "svg"
 }).catch(console.error);
