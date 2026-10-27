@@ -3,7 +3,7 @@
   "description": "Flow map showing inter-capital public transport passenger movements between major Australian city pairs.",
 
   "width": "container",
-  "height": 620,
+  "height": 540,
 
   "projection": {
     "type": "conicConformal",
@@ -134,10 +134,10 @@
         "size": {
           "field": "passenger_thousands",
           "type": "quantitative",
-          "title": "Passenger movements (thousand)",
+          "title": "Passenger movements",
           "scale": {
             "domain": [0, 900],
-            "range": [1.5, 12]
+            "range": [1.5, 10]
           },
           "legend": {
             "orient": "bottom-right",
@@ -145,7 +145,7 @@
             "format": ".0f",
             "labelExpr": "datum.label + 'k'",
             "titleFontSize": 12,
-            "labelFontSize": 11
+            "labelFontSize": 12
           }
         },
 
@@ -154,7 +154,7 @@
           "type": "quantitative",
           "scale": {
             "domain": [0, 900],
-            "range": [0.25, 0.9]
+            "range": [0.35, 0.85]
           },
           "legend": null
         },
