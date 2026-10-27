@@ -1,0 +1,321 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v6.json",
+
+  "description": "Dot plot comparing customer satisfaction across NSW public transport modes.",
+
+  "width": "container",
+  "height": 310,
+
+  "params": [
+    {
+      "name": "SelectedWave",
+      "value": "May 2024",
+
+      "bind": {
+        "input": "select",
+
+        "options": [
+          "Nov 2020",
+          "May 2021",
+          "May 2022",
+          "Nov 2022",
+          "May 2023",
+          "Nov 2023",
+          "May 2024"
+        ],
+
+        "name": "Survey wave: "
+      }
+    }
+  ],
+
+  "data": {
+    "url": "data/nsw_customer_satisfaction_by_mode.csv",
+
+    "format": {
+      "type": "csv",
+
+      "parse": {
+        "satisfaction_pct": "number"
+      }
+    }
+  },
+
+  "transform": [
+    {
+      "filter": "datum.survey_wave == SelectedWave"
+    },
+    {
+      "calculate": "format(datum.satisfaction_pct, '.0f') + '%'",
+      "as": "satisfaction_label"
+    },
+    {
+      "calculate": "datum.satisfaction_pct - 80",
+      "as": "satisfaction_position"
+    }
+  ],
+
+  "layer": [
+    {
+      "mark": {
+        "type": "rule",
+
+        "color": "#132a2f",
+
+        "opacity": 0.15,
+
+        "strokeWidth": 1,
+
+        "strokeDash": [
+          5,
+          5
+        ]
+      },
+
+      "encoding": {
+        "x": {
+          "datum": 10,
+          "type": "quantitative",
+          "scale": {
+            "domain": [
+              0,
+              20
+            ]
+          }
+        }
+      }
+    },
+
+    {
+      "mark": {
+        "type": "point",
+
+        "filled": true,
+
+        "size": 240,
+
+        "stroke": "#ffffff",
+        "strokeWidth": 2
+      },
+
+      "encoding": {
+        "x": {
+          "field": "satisfaction_position",
+          "type": "quantitative",
+
+          "title": "Customers satisfied (%)",
+
+          "scale": {
+            "domain": [
+              0,
+              20
+            ]
+          },
+
+          "axis": {
+            "values": [
+              0,
+              5,
+              10,
+              15,
+              20
+            ],
+
+            "labelExpr": "datum.value + 80 + '%'",
+
+            "labelFontSize": 11,
+            "labelColor": "#637174",
+
+            "titleFontSize": 12,
+            "titleColor": "#637174",
+            "titlePadding": 14,
+
+            "domain": false,
+            "ticks": false,
+
+            "grid": true,
+            "gridColor": "#132a2f",
+            "gridOpacity": 0.07
+          }
+        },
+
+        "y": {
+          "field": "mode",
+          "type": "nominal",
+
+          "sort": {
+            "field": "satisfaction_pct",
+            "order": "descending"
+          },
+
+          "title": null,
+
+          "axis": {
+            "labelFont": "Inter",
+            "labelFontSize": 13,
+            "labelFontWeight": 700,
+
+            "labelColor": "#132a2f",
+
+            "labelPadding": 12,
+
+            "domain": false,
+            "ticks": false
+          }
+        },
+
+        "color": {
+          "field": "mode",
+          "type": "nominal",
+
+          "scale": {
+            "domain": [
+              "Train",
+              "Bus",
+              "Ferry",
+              "Light rail",
+              "Metro"
+            ],
+
+            "range": [
+              "#355c7d",
+              "#d6a43b",
+              "#63aaa7",
+              "#e85d3f",
+              "#7567a7"
+            ]
+          },
+
+          "legend": null
+        },
+
+        "tooltip": [
+          {
+            "field": "mode",
+            "type": "nominal",
+            "title": "Transport mode"
+          },
+
+          {
+            "field": "survey_wave",
+            "type": "nominal",
+            "title": "Survey"
+          },
+
+          {
+            "field": "satisfaction_pct",
+            "type": "quantitative",
+            "title": "Satisfied",
+            "format": ".0f"
+          }
+        ]
+      }
+    },
+
+    {
+      "mark": {
+        "type": "text",
+
+        "align": "right",
+        "baseline": "middle",
+
+        "dx": -13,
+
+        "font": "Inter",
+
+        "fontSize": 12,
+        "fontWeight": 800,
+
+        "color": "#132a2f"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "satisfaction_position",
+          "type": "quantitative",
+
+          "scale": {
+            "domain": [
+              0,
+              20
+            ]
+          }
+        },
+
+        "y": {
+          "field": "mode",
+          "type": "nominal",
+
+          "sort": {
+            "field": "satisfaction_pct",
+            "order": "descending"
+          }
+        },
+
+        "text": {
+          "field": "satisfaction_label",
+          "type": "nominal"
+        }
+      }
+    },
+
+    {
+      "data": {
+        "values": [
+          {
+            "x": 10,
+            "label": "90% satisfied"
+          }
+        ]
+      },
+
+      "mark": {
+        "type": "text",
+
+        "align": "left",
+
+        "dx": 7,
+        "dy": -140,
+
+        "font": "Inter",
+
+        "fontSize": 10,
+        "fontWeight": 700,
+
+        "color": "#8a9698"
+      },
+
+      "encoding": {
+        "x": {
+          "field": "x",
+          "type": "quantitative",
+
+          "scale": {
+            "domain": [
+              0,
+              20
+            ]
+          }
+        },
+
+        "y": {
+          "value": 150
+        },
+
+        "text": {
+          "field": "label"
+        }
+      }
+    }
+  ],
+
+  "config": {
+    "background": null,
+
+    "view": {
+      "stroke": null
+    },
+
+    "font": "Inter"
+  }
+}

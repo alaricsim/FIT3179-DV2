@@ -64,7 +64,7 @@
   },
 
   "spec": {
-    "width": 760,
+    "width": "container",
     "height": 115,
 
     "mark": {
@@ -85,10 +85,12 @@
       },
 
       "rule": {
+        "stroke": "#637174",
         "strokeWidth": 1.2
       },
 
       "ticks": {
+        "stroke": "#637174",
         "strokeWidth": 1.2
       },
 
@@ -164,9 +166,9 @@
           ],
 
           "range": [
-            "#355c7d",
-            "#e8a35b",
-            "#69a7a5"
+            "#567f9f",
+            "#d7a33c",
+            "#e85d3f"
           ]
         },
 

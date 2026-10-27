@@ -20,15 +20,15 @@
             <div class="nav-brand">Australia in Motion</div>
 
             <div class="nav-links">
-                <a href="#overview">Overview</a>
-                <a href="#covid-recovery">COVID recovery</a>
-                <a href="#connections">Connections</a>
-                <a href="#daytype-distribution">Daily patterns</a>
+                <a href="#national-picture">National picture</a>
+                <a href="#everyday-travel">Everyday travel</a>
+                <a href="#shock-and-recovery">Shock &amp; recovery</a>
+                <a href="#passenger-experience">Passenger experience</a>
             </div>
         </nav>
 
         <div class="hero-content">
-            <p class="eyebrow">FIT3179 · DATA VISUALISATION · 2026</p>
+            <p class="eyebrow">AUSTRALIA · PUBLIC TRANSPORT · DATA STORY</p>
 
             <h1>
                 Australia
@@ -47,40 +47,53 @@
             <p class="hero-credit">An interactive data story by Alaric Sim</p>
         </div>
 
-        <div class="hero-route-map" aria-hidden="true">
-            <svg viewBox="0 0 560 430" role="presentation">
-                <defs>
-                    <pattern id="route-grid" width="28" height="28" patternUnits="userSpaceOnUse">
-                        <circle cx="1" cy="1" r="1" fill="#f4f1e9" fill-opacity="0.13"></circle>
-                    </pattern>
-                </defs>
-                <rect width="560" height="430" fill="url(#route-grid)"></rect>
-                <path class="route route-rail" d="M68 363 170 261 170 155 280 45 390 45 490 145 490 255 390 355 280 355"></path>
-                <path class="route route-tram" d="M67 148 174 148 280 254 390 254 490 154"></path>
-                <path class="route route-bus" d="M68 363 68 256 174 148 280 45"></path>
-                <path class="route route-ferry" d="M280 355 390 355 490 255"></path>
-                <g class="route-stations">
-                    <circle cx="68" cy="363" r="8"></circle>
-                    <circle cx="170" cy="261" r="7"></circle>
-                    <circle cx="170" cy="155" r="7"></circle>
-                    <circle cx="280" cy="45" r="8"></circle>
-                    <circle cx="390" cy="45" r="7"></circle>
-                    <circle cx="490" cy="145" r="8"></circle>
-                    <circle cx="490" cy="255" r="7"></circle>
-                    <circle cx="390" cy="355" r="8"></circle>
-                    <circle cx="280" cy="254" r="6"></circle>
-                    <circle cx="68" cy="256" r="6"></circle>
+        <div class="hero-route-map">
+            <div class="hero-map-heading">
+                <div>
+                    <span class="hero-map-kicker">THE NATIONAL PICTURE</span>
+                    <h2>Connected across a continent</h2>
+                </div>
+                <span class="hero-map-index">01 / 04</span>
+            </div>
+
+            <svg class="australia-network-map" viewBox="0 0 560 430" role="img" aria-labelledby="map-title map-description">
+                <title id="map-title">Australian capital cities and inter-capital public transport links</title>
+                <desc id="map-description">A map of Australia with capital cities marked and connections drawn between Adelaide, Brisbane, Canberra, Melbourne and Sydney.</desc>
+
+                <g class="map-land">
+                    <path d="M455.4 290.1 L452 303.6 L444.9 310.4 L442.7 329.9 L422.6 322.2 L421.4 314.1 L418.3 312.8 L410 314.9 L390.4 311.7 L384.9 314.4 L371.7 304.9 L371.2 300.5 L365.1 297.9 L362.3 300.2 L357 293.1 L345.8 292.2 L345.8 238 L431.7 238 L437.6 233.4 L446.1 233 L453.9 235.2 L458.1 239.9 L464.7 237 L464.1 232.8 L469.6 230 L481.4 229 L482 236.3 L470.4 275.2 L460.4 280.8 L458.3 286.9 L454.6 286.1 L457.4 287.5 Z"></path>
+                    <path d="M390.4 339.4 L385.2 338.5 L390.3 336.8 L387.9 333.5 L382.1 336.3 L385.5 338.1 L372.9 344.5 L360.6 339 L349.8 339.4 L345.4 335.8 L345.4 291.8 L359 294 L362.3 300.2 L365.1 297.9 L371.2 300.5 L371.7 304.9 L386 314.9 L394.8 311.5 L410 314.9 L420.5 313.5 L422.5 322.1 L442.7 329.9 L419.1 334.7 L409.3 342.1 L402.1 342.7 L405 343.8 L404.4 347.4 L393 341 L394.3 337.7 Z"></path>
+                    <path d="M353 86.8 L350.8 74.5 L355.5 60.8 L352.2 60.4 L356.7 54.8 L358 43 L362.3 40.2 L365.8 52.7 L370 54.1 L368.2 58 L373.3 63.5 L375.8 80.3 L383.8 77.8 L392.8 86.3 L393.4 102.6 L399.3 107.3 L402.9 128.8 L429.7 143.3 L431.4 146.6 L428.6 147.1 L434.7 152.3 L440.3 167.1 L443.5 169.5 L443.5 163.8 L448.9 169.1 L449.1 165.8 L451.1 167.2 L452.3 179.9 L458.5 184.8 L462.1 184.2 L470.5 197 L474.5 198 L475.5 205.5 L477.5 204.9 L476 221.4 L479.9 223.3 L481.4 229 L469.6 230 L464.1 232.8 L464.7 237 L458.1 239.9 L453.9 235.2 L446.1 233 L437.6 233.4 L431.7 238 L345.8 238 L345.8 205.6 L313.4 205.6 L313.4 103.5 L324.6 107.5 L326.8 111.9 L335 116.1 L341.4 114.9 L349 103 Z"></path>
+                    <path d="M318.8 301.1 L314.2 293.4 L310.8 304 L300.7 305.4 L302.7 301.6 L307.4 301.8 L307.5 293.5 L313.2 287.2 L310.7 274.9 L311.1 281.2 L291.1 297.7 L291.3 302.9 L282.2 298.4 L286.6 298.6 L283.7 291.8 L277.8 283.1 L272 281.8 L273.1 276.6 L268.6 276.3 L266.6 271.5 L250.8 270.7 L239.4 264.6 L216.2 267 L216.2 205.6 L345.8 205.6 L345.4 335.8 L339.3 334.3 L332.2 326.4 L333.4 320.6 L328.3 312.4 L321.6 308.4 L314.4 309.6 Z"></path>
+                    <path d="M47.7 209.8 L47.3 205.8 L49.9 212.2 L52.9 211.1 L48.9 200.2 L51 207.8 L52.9 205 L55 210.6 L56.8 209 L57.1 204.4 L47.6 186.4 L51.8 178.4 L50.5 168.7 L54.5 160.8 L55.8 168.2 L57.9 168 L61.2 160.7 L70.3 157.5 L84.6 146.5 L90.7 149.3 L106.5 143.9 L109.3 140.4 L114.3 141.7 L131 135.8 L138.6 124.1 L144.6 120.5 L142.5 111.2 L149.7 106.2 L150.6 101.8 L157.7 114.7 L157.7 108.8 L161.3 110.7 L161.8 106.8 L156.8 104.7 L159.1 101.6 L157.4 99.5 L166.6 103.5 L166.4 101.3 L172.4 101.8 L166.5 101.3 L170.2 95.7 L167.6 97.6 L166.7 92.7 L169.8 89.5 L177.5 94.3 L171.2 88.5 L173.8 86.5 L178.2 88.5 L174.5 84.1 L179.5 82.1 L179.4 78.6 L180 83 L181.7 80.8 L183.1 82.9 L185.6 77.6 L183.9 75.2 L186.5 78.6 L189.6 75.3 L190.3 78.5 L193.3 73.3 L199.2 75.4 L207.8 83.8 L205.4 92.4 L206.8 88.8 L209.1 92.2 L209.6 84.7 L216.2 85.5 L216.2 267 L198.1 273.2 L183.3 273.5 L164.8 281.4 L157.2 291.4 L119.5 291.2 L114.4 296.2 L95.8 303.3 L97.6 304 L81 303 L65.3 294.7 L65 286.9 L69 288.1 L72.2 284.7 L72.4 273.3 L75.5 269.3 L72.8 271 L65.6 254.3 L63.6 239.3 L45.1 207.2 L46.6 205.8 Z"></path>
+                    <path d="M386.3 368.3 L386 363.7 L391.8 364.5 L404 370.2 L408.1 368.5 L411.9 372.4 L408.3 368.2 L422.3 365.1 L425.2 367.5 L425.3 380.3 L421.9 379.7 L419.1 388.2 L415.3 386.8 L417.2 387.5 L415.1 389.7 L411.8 386.7 L414.3 389.8 L412.4 392.3 L410.9 389.8 L409.7 395.7 L400.1 395.4 L399 393.3 L402.3 392.7 L394.3 389.1 L390.8 380.5 L395.7 383.2 Z"></path>
+                    <path d="M232.6 62.3 L235 62.1 L233.7 58.5 L237.4 61.2 L235.8 58.8 L241 54.9 L249.4 57.7 L255.4 55.3 L253.9 48.8 L246 47 L248.5 44.9 L250.4 48.1 L252.2 44.8 L261.5 51.5 L269.3 51.6 L272 55.6 L278.3 53.9 L283.3 57.6 L290.8 53.9 L288 56.6 L292.3 55.1 L292 59.7 L297.9 53.1 L298.8 57.3 L302.4 58.1 L296.8 62.7 L299 65.2 L296.7 65 L296.9 67.9 L295.4 65.6 L290.9 68.1 L290.8 78.1 L285.1 83.8 L295.2 93.6 L299.6 94.3 L299.4 96.9 L302.4 96 L313.4 103.5 L313.4 205.6 L216.2 205.6 L216.2 85.5 L217.9 88.9 L218.7 85.1 L223.6 88.3 L221.6 84.5 L226 84.4 L220.2 79.7 L225 70.6 L230 68.8 L228.5 64.5 Z"></path>
                 </g>
-                <g class="route-labels">
-                    <text x="58" y="405">CITY</text>
-                    <text x="257" y="25">NORTH</text>
-                    <text x="451" y="300">EAST</text>
-                    <text x="365" y="398">COAST</text>
+
+                <g class="capital-routes">
+                    <path class="capital-route route-west" d="M455 290 Q425 310 388 332"></path>
+                    <path class="capital-route route-south" d="M388 332 Q352 313 320 301"></path>
+                    <path class="capital-route route-east" d="M455 290 Q468 254 476 221"></path>
+                    <path class="capital-route route-canberra" d="M455 290 Q444 297 433 305"></path>
+                    <path class="capital-route route-north" d="M388 332 Q445 265 476 221"></path>
+                    <path class="capital-route route-adelaide" d="M455 290 Q390 282 320 301"></path>
+                </g>
+
+                <g class="capital-markers">
+                    <g class="capital-city perth"><circle cx="75" cy="269" r="5"></circle><text x="62" y="257">PERTH</text></g>
+                    <g class="capital-city darwin"><circle cx="236" cy="59" r="5"></circle><text x="212" y="48">DARWIN</text></g>
+                    <g class="capital-city adelaide"><circle cx="320" cy="301" r="5"></circle><text x="282" y="321">ADELAIDE</text></g>
+                    <g class="capital-city melbourne"><circle cx="388" cy="332" r="5"></circle><text x="365" y="354">MELBOURNE</text></g>
+                    <g class="capital-city canberra"><circle cx="433" cy="305" r="4"></circle><text x="401" y="284">CANBERRA</text></g>
+                    <g class="capital-city sydney"><circle cx="455" cy="290" r="5"></circle><text x="462" y="308">SYDNEY</text></g>
+                    <g class="capital-city brisbane"><circle cx="476" cy="221" r="5"></circle><text x="482" y="218">BRISBANE</text></g>
+                    <g class="capital-city hobart"><circle cx="411" cy="382" r="4"></circle><text x="419" y="386">HOBART</text></g>
                 </g>
             </svg>
-            <div class="route-map-caption">
-                <span class="route-live-dot"></span>
-                <span>One network. Many ways to move.</span>
+
+            <div class="hero-map-footer">
+                <span class="hero-map-legend"><i></i> Capital-city connections</span>
+                <span class="hero-map-caption">Eight capitals · selected passenger corridors</span>
             </div>
         </div>
 
@@ -106,7 +119,7 @@
                     <p class="section-kicker">YOUR ROUTE THROUGH THE DATA</p>
 
                     <h2>
-                        Eight views. One changing network.
+                        Eleven views. One changing network.
                     </h2>
                 </div>
 
@@ -126,35 +139,35 @@
             </div>
 
             <nav class="story-index" aria-label="Explore the data story">
-                <a class="story-index-link" href="#overview">
+                <a class="story-index-link" href="#national-picture">
                     <span class="story-index-number">01</span>
                     <span class="story-index-copy">
-                        <strong>Across Australia</strong>
-                        <small>Compare capital-city networks</small>
+                        <strong>The National Picture</strong>
+                        <small>Patronage, commuting and connections</small>
                     </span>
                     <span class="story-index-arrow" aria-hidden="true">↗</span>
                 </a>
-                <a class="story-index-link" href="#covid-recovery">
+                <a class="story-index-link" href="#everyday-travel">
+                    <span class="story-index-number">02</span>
+                    <span class="story-index-copy">
+                        <strong>The Rhythm of Everyday Travel</strong>
+                        <small>Weekly routines and changing travel</small>
+                    </span>
+                    <span class="story-index-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="story-index-link" href="#shock-and-recovery">
+                    <span class="story-index-number">03</span>
+                    <span class="story-index-copy">
+                        <strong>Shock and Recovery</strong>
+                        <small>COVID disruption and recovery</small>
+                    </span>
+                    <span class="story-index-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="story-index-link" href="#passenger-experience">
                     <span class="story-index-number">04</span>
                     <span class="story-index-copy">
-                        <strong>Network under pressure</strong>
-                        <small>Trace the pandemic and recovery</small>
-                    </span>
-                    <span class="story-index-arrow" aria-hidden="true">↗</span>
-                </a>
-                <a class="story-index-link" href="#connections">
-                    <span class="story-index-number">06</span>
-                    <span class="story-index-copy">
-                        <strong>Connected journeys</strong>
-                        <small>Follow links between cities</small>
-                    </span>
-                    <span class="story-index-arrow" aria-hidden="true">↗</span>
-                </a>
-                <a class="story-index-link" href="#daytype-distribution">
-                    <span class="story-index-number">07</span>
-                    <span class="story-index-copy">
-                        <strong>Everyday patterns</strong>
-                        <small>See routines across the week</small>
+                        <strong>The Passenger Experience</strong>
+                        <small>Satisfaction, reliability and scale</small>
                     </span>
                     <span class="story-index-arrow" aria-hidden="true">↗</span>
                 </a>
@@ -163,16 +176,26 @@
         </section>
 
 
-        <!-- SECTION 1 -->
-        <section id="overview" class="story-section">
+        <!-- CHAPTER 1: THE NATIONAL PICTURE -->
+        <section id="national-picture" class="story-chapter">
+            <header class="chapter-heading">
+                <span class="chapter-number">01</span>
+                <div>
+                    <p class="section-kicker">THE NATIONAL PICTURE</p>
+                    <h2>One country, many ways to move.</h2>
+                    <p class="chapter-description">Start with the national view: compare capital-city patronage, see where public transport shapes the commute, and follow the connections between capitals.</p>
+                </div>
+            </header>
+
+<section id="overview" class="story-section">
 
             <div class="section-heading">
                 <div class="section-number">01</div>
 
                 <div>
-                    <p class="section-kicker">THE NATIONAL PICTURE</p>
+                    <p class="section-kicker">CAPITAL-CITY PATRONAGE</p>
 
-                    <h2>One country. Very different ways of moving.</h2>
+                    <h3>One country. Very different ways of moving.</h3>
 
                     <p class="section-description">
                         Public transport use varies substantially between
@@ -188,89 +211,11 @@
 
         </section>
 
-        <!-- SECTION 2 -->
-        <section id="rhythm" class="story-section">
+<section id="commute-map" class="story-section">
 
             <div class="section-heading">
 
                 <div class="section-number">02</div>
-
-                <div>
-                    <p class="section-kicker">
-                        THE RHYTHM OF THE WEEK
-                    </p>
-
-                    <h2>
-                        Melbourne’s transport network has a rhythm of its own.
-                    </h2>
-
-                    <p class="section-description">
-                        Travel demand follows a recognisable weekly rhythm.
-                        Weekdays carry the regular commute, while weekends reveal
-                        a different pattern of movement across Victoria's public
-                        transport network.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="visual-card">
-
-                <div class="chart-header">
-
-                    <div>
-                        <h3>
-                            A year of travel, one week at a time
-                        </h3>
-
-                        <p>
-                            Each cell represents average daily passenger boardings
-                            for a particular month and day of the week.
-                            Darker cells indicate busier days.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div id="chart2"></div>
-
-
-                <div class="chart-insight">
-
-                    <span class="insight-label">
-                        HOW TO READ
-                    </span>
-
-                    <p>
-                        Read horizontally to compare weekdays with weekends.
-                        Read vertically to see how the same day changes through
-                        the year. Use the controls above the chart to compare
-                        different transport modes and years.
-                    </p>
-
-                </div>
-
-
-                <p class="chart-source">
-                    Source: Victorian Department of Transport and Planning,
-                    Monthly average patronage by day type and by mode.
-                    Weekday cells represent normal weekdays; Saturday and Sunday
-                    represent weekend travel.
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- SECTION 3 -->
-        <section id="commute-map" class="story-section">
-
-            <div class="section-heading">
-
-                <div class="section-number">03</div>
 
                 <div>
 
@@ -278,10 +223,10 @@
                         THE GEOGRAPHY OF THE COMMUTE
                     </p>
 
-                    <h2>
+                    <h3>
                         Public transport matters more to the commute
                         in some parts of Australia than others.
-                    </h2>
+                    </h3>
 
                     <p class="section-description">
                         The role of public transport differs substantially across
@@ -349,9 +294,398 @@
 
         </section>
 
+<section id="connections" class="story-section">
 
-        <!-- SECTION 4 -->
-        <section id="covid-recovery" class="story-section dark-section">
+            <div class="section-heading">
+
+                <div class="section-number">03</div>
+
+                <div>
+                    <p class="section-kicker">
+                        LONG-DISTANCE CONNECTIONS
+                    </p>
+
+                    <h3>
+                        The long-distance connections that public transport still makes possible.
+                    </h3>
+
+                    <p class="section-description">
+                        Public transport does not only shape movement within cities.
+                        Rail, coach and other non-air public transport continue to
+                        connect major Australian capitals, though some corridors are
+                        much busier than others.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-large">
+
+                <div class="chart-header">
+                    <div>
+                        <h3>
+                            Inter-capital passenger movements by city pair
+                        </h3>
+
+                        <p>
+                            Line thickness represents the number of passenger movements
+                            between major capital-city pairs using rail, coach and other
+                            non-air public transport. Change the financial year to compare
+                            pre-pandemic, pandemic and recovery patterns.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div id="chart6"></div>
+
+
+                <div class="chart-insight">
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Each line connects a pair of capitals. Thicker and darker lines
+                        indicate more passenger movements. The flows are undirected,
+                        so each connection represents total movement between the two cities
+                        rather than one-way trips.
+                    </p>
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Bureau of Infrastructure and Transport Research Economics,
+                    Australian Infrastructure and Transport Statistics Yearbook 2025,
+                    Table 2.2d: Inter-capital city passenger travel by city pair —
+                    Rail, Coach and Other.
+                </p>
+
+            </div>
+
+        </section>
+        </section>
+
+<section id="everyday-travel" class="story-chapter">
+            <header class="chapter-heading">
+                <span class="chapter-number">02</span>
+                <div>
+                    <p class="section-kicker">THE RHYTHM OF EVERYDAY TRAVEL</p>
+                    <h2>A network shaped by daily routines.</h2>
+                    <p class="chapter-description">Look closer at the patterns of everyday travel, from the weekly rhythm and school-holiday shifts to the changing balance between transport modes.</p>
+                </div>
+            </header>
+
+<section id="rhythm" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">04</div>
+
+                <div>
+                    <p class="section-kicker">
+                        THE RHYTHM OF THE WEEK
+                    </p>
+
+                    <h3>
+                        Melbourne’s transport network has a rhythm of its own.
+                    </h3>
+
+                    <p class="section-description">
+                        Travel demand follows a recognisable weekly rhythm.
+                        Weekdays carry the regular commute, while weekends reveal
+                        a different pattern of movement across Victoria's public
+                        transport network.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card">
+
+                <div class="chart-header">
+
+                    <div>
+                        <h3>
+                            A year of travel, one week at a time
+                        </h3>
+
+                        <p>
+                            Each cell represents average daily passenger boardings
+                            for a particular month and day of the week.
+                            Darker cells indicate busier days.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div id="chart2"></div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Read horizontally to compare weekdays with weekends.
+                        Read vertically to see how the same day changes through
+                        the year. Use the controls above the chart to compare
+                        different transport modes and years.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Victorian Department of Transport and Planning,
+                    Monthly average patronage by day type and by mode.
+                    Weekday cells represent normal weekdays; Saturday and Sunday
+                    represent weekend travel.
+                </p>
+
+            </div>
+
+        </section>
+
+<section id="daytype-distribution" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">05</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        WHEN ROUTINE CHANGES
+                    </p>
+
+                    <h3>
+                        School holidays reshape the weekday commute.
+                    </h3>
+
+                    <p class="section-description">
+                        A normal weekday, a school-holiday weekday and a weekend
+                        create very different demand conditions. Looking beyond
+                        averages reveals how much patronage varies under each type
+                        of day — and whether that effect is the same across modes.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-large">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            How predictable is demand on different kinds of days?
+                        </h3>
+
+                        <p>
+                            Each box summarises average daily patronage observations
+                            from 2023 to 2025. Compare the centre and spread of each
+                            distribution to see how travel changes between normal
+                            weekdays, school holidays and weekends.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="daytype-key">
+
+                    <div class="daytype-key-item">
+                        <span class="daytype-colour normal-day"></span>
+                        <span>Normal weekday</span>
+                    </div>
+
+                    <div class="daytype-key-item">
+                        <span class="daytype-colour holiday-day"></span>
+                        <span>School holiday weekday</span>
+                    </div>
+
+                    <div class="daytype-key-item">
+                        <span class="daytype-colour weekend-day"></span>
+                        <span>Weekend</span>
+                    </div>
+
+                </div>
+
+
+                <div id="chart7"></div>
+
+
+                <div class="boxplot-guide">
+
+                    <div class="boxplot-mini">
+
+                        <span class="whisker"></span>
+                        <span class="box-example">
+                            <span class="median-example"></span>
+                        </span>
+                        <span class="whisker"></span>
+
+                    </div>
+
+                    <p>
+                        The box shows the middle 50% of observations, the dark
+                        line marks the median and the whiskers show the typical
+                        range. Individual points beyond the whiskers represent
+                        unusually high or low observations.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Compare the three boxes within each transport mode.
+                        A box further to the right represents higher typical
+                        patronage. Wider boxes and longer whiskers indicate
+                        greater variation in demand. Each mode uses its own
+                        horizontal scale so that its distribution remains visible.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Victorian Department of Transport and Planning,
+                    Monthly average patronage by day type and by mode.
+                    Visualisation uses observations from 2023–2025.
+                </p>
+
+            </div>
+
+        </section>
+
+<section id="mode-mix-over-time" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">06</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        A CHANGING MIX
+                    </p>
+
+                    <h3>
+                        The mix of public transport changed after 2020.
+                    </h3>
+
+                    <p class="section-description">
+                        COVID did more than reduce the number of passengers.
+                        It changed the balance between different forms of public
+                        transport. Looking at each mode as a share of the network
+                        reveals which parts of Victoria's system became relatively
+                        more or less important.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-large">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            Victoria's public transport mix, month by month
+                        </h3>
+
+                        <p>
+                            Each coloured stream represents one transport mode.
+                            Stream thickness shows its share of total public transport
+                            patronage during that month rather than its raw number
+                            of passengers.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="chart8"></div>
+
+
+                <div class="streamgraph-guide">
+
+                    <div class="stream-example">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <p>
+                        Look at the thickness of each coloured band rather than its
+                        vertical position. A wider band means that mode accounted
+                        for a larger share of public transport use during that month.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        HOW TO READ
+                    </span>
+
+                    <p>
+                        Follow one colour from left to right to track how that mode's
+                        share changes through time. Because every month is normalised
+                        to the same total, changes in band width represent changes
+                        in the transport mix rather than changes in the overall number
+                        of passengers.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Victorian Department of Transport and Planning,
+                    Monthly public transport patronage by mode.
+                    Values are expressed as each mode's share of total monthly
+                    patronage.
+                </p>
+
+            </div>
+
+        </section>
+        </section>
+
+<section id="shock-and-recovery" class="story-chapter">
+            <header class="chapter-heading">
+                <span class="chapter-number">03</span>
+                <div>
+                    <p class="section-kicker">SHOCK AND RECOVERY</p>
+                    <h2>A disruption felt across the network.</h2>
+                    <p class="chapter-description">Trace the disruption of COVID-19 and compare how quickly different parts of Victoria?s public transport network recovered.</p>
+                </div>
+            </header>
+
+<section id="covid-recovery" class="story-section">
 
             <div class="covid-marker-note">
                 <span class="covid-line"></span>
@@ -363,7 +697,7 @@
 
             <div class="section-heading">
 
-                <div class="section-number">04</div>
+                <div class="section-number">07</div>
 
                 <div>
 
@@ -371,10 +705,10 @@
                         A NETWORK INTERRUPTED
                     </p>
 
-                    <h2>
+                    <h3>
                         COVID did not hit every transport mode
                         in the same way.
-                    </h2>
+                    </h3>
 
                     <p class="section-description">
                         When everyday movement stopped, public transport patronage
@@ -388,7 +722,7 @@
             </div>
 
 
-            <div class="visual-card visual-card-dark">
+            <div class="visual-card visual-card-large">
 
                 <div class="chart-header">
 
@@ -465,12 +799,11 @@
 
         </section>
 
-        <!-- SECTION 5 -->
-        <section id="recovery-race" class="story-section">
+<section id="recovery-race" class="story-section">
 
             <div class="section-heading">
 
-                <div class="section-number">05</div>
+                <div class="section-number">08</div>
 
                 <div>
 
@@ -478,9 +811,9 @@
                         THE RECOVERY RACE
                     </p>
 
-                    <h2>
+                    <h3>
                         Which modes recovered fastest?
-                    </h2>
+                    </h3>
 
                     <p class="section-description">
                         The pandemic affected every part of Victoria's public
@@ -606,28 +939,177 @@
             </div>
 
         </section>
+        </section>
 
-        <section id="connections" class="story-section">
+<section id="passenger-experience" class="story-chapter">
+            <header class="chapter-heading">
+                <span class="chapter-number">04</span>
+                <div>
+                    <p class="section-kicker">THE PASSENGER EXPERIENCE</p>
+                    <h2>What travel feels like, and how services perform.</h2>
+                    <p class="chapter-description">Finish with the passenger perspective: satisfaction, service reliability, and how network scale relates to public-transport commuting.</p>
+                </div>
+            </header>
+
+<section id="customer-experience" class="story-section">
 
             <div class="section-heading">
 
-                <div class="section-number">06</div>
+                <div class="section-number">09</div>
 
                 <div>
+
                     <p class="section-kicker">
-                        LONG-DISTANCE CONNECTIONS
+                        THE PASSENGER EXPERIENCE
                     </p>
 
-                    <h2>
-                        The long-distance connections that public transport still makes possible.
-                    </h2>
+                    <h3>
+                        Passengers are highly satisfied —
+                        but not equally across every mode.
+                    </h3>
 
                     <p class="section-description">
-                        Public transport does not only shape movement within cities.
-                        Rail, coach and other non-air public transport continue to
-                        connect major Australian capitals, though some corridors are
-                        much busier than others.
+                        Patronage tells us how much public transport is used.
+                        Customer satisfaction tells us what that journey feels like.
+                        Transport for NSW surveys show consistently high satisfaction,
+                        although passenger experiences differ between modes.
                     </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            Customer satisfaction across NSW public transport
+                        </h3>
+
+                        <p>
+                            The percentage of surveyed passengers who reported being
+                            partly to very satisfied with their public transport
+                            service. Change the survey wave to see how satisfaction
+                            has shifted over time.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="chart9"></div>
+
+
+                <div class="experience-highlight">
+
+                    <div class="experience-stat">
+
+                        <span class="experience-number">
+                            98%
+                        </span>
+
+                        <div>
+                            <strong>Ferry</strong>
+
+                            <p>
+                                Highest satisfaction in May 2024.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="experience-stat">
+
+                        <span class="experience-number">
+                            97%
+                        </span>
+
+                        <div>
+                            <strong>Metro</strong>
+
+                            <p>
+                                Also maintained very high satisfaction.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="experience-stat">
+
+                        <span class="experience-number">
+                            87%
+                        </span>
+
+                        <div>
+                            <strong>Train & bus</strong>
+
+                            <p>
+                                Lower than the other surveyed modes in May 2024.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        WHY IT MATTERS
+                    </span>
+
+                    <p>
+                        A larger network or higher patronage does not necessarily
+                        mean a better passenger experience. Ferry and metro users
+                        reported particularly high satisfaction, while train and
+                        bus satisfaction was lower in the May 2024 survey.
+                    </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Transport for NSW, Customer Satisfaction Index,
+                    May 2024. Satisfaction represents passengers who reported
+                    being partly to very satisfied.
+                </p>
+
+            </div>
+
+        </section>
+
+<section id="service-reliability" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">10</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        WHEN SERVICES FALL SHORT
+                    </p>
+
+                    <h3>
+                        Reliability problems extend beyond simply running late.
+                    </h3>
+
+                    <p class="section-description">
+                        Passenger experience depends on more than whether a bus
+                        arrives. Services must run on time, avoid cancellations,
+                        remain visible in real-time systems and generate fewer
+                        complaints. Across Greater Sydney, performance against
+                        these targets has varied considerably.
+                    </p>
+
                 </div>
 
             </div>
@@ -636,268 +1118,216 @@
             <div class="visual-card visual-card-large">
 
                 <div class="chart-header">
+
                     <div>
+
                         <h3>
-                            Inter-capital passenger movements by city pair
+                            How often did Greater Sydney bus operators meet their targets?
                         </h3>
 
                         <p>
-                            Line thickness represents the number of passenger movements
-                            between major capital-city pairs using rail, coach and other
-                            non-air public transport. Change the financial year to compare
-                            pre-pandemic, pandemic and recovery patterns.
+                            Each pair of bars shows the share of reported operator-month
+                            observations that met or missed the relevant performance KPI
+                            between January 2023 and May 2024.
                         </p>
+
                     </div>
+
                 </div>
 
 
-                <div id="chart6"></div>
+                <div id="chart10"></div>
+
+
+                <div class="reliability-summary">
+
+                    <div class="reliability-item">
+
+                        <span class="reliability-value">
+                            15%
+                        </span>
+
+                        <div>
+                            <strong>On-time target met</strong>
+
+                            <p>
+                                First-stop punctuality met its KPI in only a small
+                                minority of reported observations.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reliability-item">
+
+                        <span class="reliability-value">
+                            20%
+                        </span>
+
+                        <div>
+                            <strong>Cancellation target met</strong>
+
+                            <p>
+                                Cancelled and incomplete-trip performance also
+                                frequently fell short of target.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="reliability-item">
+
+                        <span class="reliability-value">
+                            70%
+                        </span>
+
+                        <div>
+                            <strong>Last-stop tracking target met</strong>
+
+                            <p>
+                                Real-time tracking performed better than the
+                                punctuality and cancellation measures.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
 
 
                 <div class="chart-insight">
+
                     <span class="insight-label">
-                        HOW TO READ
+                        WHY IT MATTERS
                     </span>
 
                     <p>
-                        Each line connects a pair of capitals. Thicker and darker lines
-                        indicate more passenger movements. The flows are undirected,
-                        so each connection represents total movement between the two cities
-                        rather than one-way trips.
+                        Reliability is multidimensional. Even when tracking systems
+                        successfully record services, passengers may still experience
+                        delays, cancellations or other service failures. The contrast
+                        between these measures shows why operational performance
+                        cannot be reduced to a single number.
                     </p>
+
+                </div>
+
+
+                <p class="chart-source">
+                    Source: Audit Office of New South Wales, Bus contracts in
+                    metropolitan Sydney, using Transport for NSW operator performance
+                    data. Period shown: January 2023 to May 2024.
+                </p>
+
+            </div>
+
+        </section>
+
+<section id="scale-and-reliance" class="story-section">
+
+            <div class="section-heading">
+
+                <div class="section-number">11</div>
+
+                <div>
+
+                    <p class="section-kicker">
+                        PUTTING THE PIECES TOGETHER
+                    </p>
+
+                    <h3>
+                        Bigger networks tend to support greater public-transport reliance —
+                        but scale is not the whole story.
+                    </h3>
+
+                    <p class="section-description">
+                        Australia’s largest public transport markets also tend to be
+                        places where public transport plays a greater role in the
+                        journey to work. But smaller cities do not follow a single
+                        pattern, showing that network size alone does not explain how
+                        communities use public transport.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="visual-card visual-card-large">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+                            Network scale versus commuting reliance
+                        </h3>
+
+                        <p>
+                            Each point pairs a capital city’s total public transport
+                            patronage in 2018–19 with the share of one-method commuters
+                            using public transport in its state or territory in the
+                            2016 Census.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="chart11"></div>
+
+
+                <div class="scatter-guide">
+
+                    <div class="scatter-example">
+
+                        <span class="scatter-dot dot-one"></span>
+                        <span class="scatter-dot dot-two"></span>
+                        <span class="scatter-dot dot-three"></span>
+
+                        <span class="scatter-line"></span>
+
+                    </div>
+
+                    <p>
+                        Points further right represent larger public transport
+                        networks. Points higher on the chart represent greater
+                        public-transport reliance for commuting. The dashed line
+                        summarises the overall relationship between the two measures.
+                    </p>
+
+                </div>
+
+
+                <div class="chart-insight">
+
+                    <span class="insight-label">
+                        THE BIG PICTURE
+                    </span>
+
+                    <p>
+                        Sydney and Melbourne combine high patronage with relatively
+                        strong commuting reliance, while smaller capitals show more
+                        varied relationships. Public transport use is shaped by scale,
+                        but also by local travel patterns, urban form and the role each
+                        network plays in everyday life.
+                    </p>
+
                 </div>
 
 
                 <p class="chart-source">
                     Source: Bureau of Infrastructure and Transport Research Economics,
-                    Australian Infrastructure and Transport Statistics Yearbook 2025,
-                    Table 2.2d: Inter-capital city passenger travel by city pair —
-                    Rail, Coach and Other.
+                    Australian Infrastructure and Transport Statistics Yearbook 2025.
+                    Patronage uses 2018–19 capital-city figures; commute share uses
+                    2016 Census method-of-travel-to-work figures.
                 </p>
 
             </div>
 
         </section>
-
-        <section id="daytype-distribution" class="story-section">
-
-            <div class="section-heading">
-
-                <div class="section-number">07</div>
-
-                <div>
-
-                    <p class="section-kicker">
-                        WHEN ROUTINE CHANGES
-                    </p>
-
-                    <h2>
-                        School holidays reshape the weekday commute.
-                    </h2>
-
-                    <p class="section-description">
-                        A normal weekday, a school-holiday weekday and a weekend
-                        create very different demand conditions. Looking beyond
-                        averages reveals how much patronage varies under each type
-                        of day — and whether that effect is the same across modes.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="visual-card visual-card-large">
-
-                <div class="chart-header">
-
-                    <div>
-
-                        <h3>
-                            How predictable is demand on different kinds of days?
-                        </h3>
-
-                        <p>
-                            Each box summarises average daily patronage observations
-                            from 2023 to 2025. Compare the centre and spread of each
-                            distribution to see how travel changes between normal
-                            weekdays, school holidays and weekends.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="daytype-key">
-
-                    <div class="daytype-key-item">
-                        <span class="daytype-colour normal-day"></span>
-                        <span>Normal weekday</span>
-                    </div>
-
-                    <div class="daytype-key-item">
-                        <span class="daytype-colour holiday-day"></span>
-                        <span>School holiday weekday</span>
-                    </div>
-
-                    <div class="daytype-key-item">
-                        <span class="daytype-colour weekend-day"></span>
-                        <span>Weekend</span>
-                    </div>
-
-                </div>
-
-
-                <div id="chart7"></div>
-
-
-                <div class="boxplot-guide">
-
-                    <div class="boxplot-mini">
-
-                        <span class="whisker"></span>
-                        <span class="box-example">
-                            <span class="median-example"></span>
-                        </span>
-                        <span class="whisker"></span>
-
-                    </div>
-
-                    <p>
-                        The box shows the middle 50% of observations, the dark
-                        line marks the median and the whiskers show the typical
-                        range. Individual points beyond the whiskers represent
-                        unusually high or low observations.
-                    </p>
-
-                </div>
-
-
-                <div class="chart-insight">
-
-                    <span class="insight-label">
-                        HOW TO READ
-                    </span>
-
-                    <p>
-                        Compare the three boxes within each transport mode.
-                        A box further to the right represents higher typical
-                        patronage. Wider boxes and longer whiskers indicate
-                        greater variation in demand. Each mode uses its own
-                        horizontal scale so that its distribution remains visible.
-                    </p>
-
-                </div>
-
-
-                <p class="chart-source">
-                    Source: Victorian Department of Transport and Planning,
-                    Monthly average patronage by day type and by mode.
-                    Visualisation uses observations from 2023–2025.
-                </p>
-
-            </div>
-
-        </section>
-
-        <section id="mode-mix-over-time" class="story-section">
-
-            <div class="section-heading">
-
-                <div class="section-number">08</div>
-
-                <div>
-
-                    <p class="section-kicker">
-                        A CHANGING MIX
-                    </p>
-
-                    <h2>
-                        The mix of public transport changed after 2020.
-                    </h2>
-
-                    <p class="section-description">
-                        COVID did more than reduce the number of passengers.
-                        It changed the balance between different forms of public
-                        transport. Looking at each mode as a share of the network
-                        reveals which parts of Victoria's system became relatively
-                        more or less important.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="visual-card visual-card-large">
-
-                <div class="chart-header">
-
-                    <div>
-
-                        <h3>
-                            Victoria's public transport mix, month by month
-                        </h3>
-
-                        <p>
-                            Each coloured stream represents one transport mode.
-                            Stream thickness shows its share of total public transport
-                            patronage during that month rather than its raw number
-                            of passengers.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div id="chart8"></div>
-
-
-                <div class="streamgraph-guide">
-
-                    <div class="stream-example">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-
-                    <p>
-                        Look at the thickness of each coloured band rather than its
-                        vertical position. A wider band means that mode accounted
-                        for a larger share of public transport use during that month.
-                    </p>
-
-                </div>
-
-
-                <div class="chart-insight">
-
-                    <span class="insight-label">
-                        HOW TO READ
-                    </span>
-
-                    <p>
-                        Follow one colour from left to right to track how that mode's
-                        share changes through time. Because every month is normalised
-                        to the same total, changes in band width represent changes
-                        in the transport mix rather than changes in the overall number
-                        of passengers.
-                    </p>
-
-                </div>
-
-
-                <p class="chart-source">
-                    Source: Victorian Department of Transport and Planning,
-                    Monthly public transport patronage by mode.
-                    Values are expressed as each mode's share of total monthly
-                    patronage.
-                </p>
-
-            </div>
-
         </section>
 
     </main>

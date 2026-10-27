@@ -103,7 +103,7 @@
         "labelFontSize": 13,
         "labelFontWeight": 700,
 
-        "labelColor": "#f4f1e9",
+        "labelColor": "#132a2f",
 
         "labelPadding": 14
       }
@@ -121,7 +121,7 @@
           "clip": true,
           "interpolate": "monotone",
 
-          "color": "#73c7bd",
+          "color": "#8099aa",
           "opacity": 0.72
         },
 
@@ -199,7 +199,7 @@
               ],
 
               "labelFontSize": 11,
-              "labelColor": "#c5d1d1",
+              "labelColor": "#637174",
 
               "labelPadding": 8,
 
@@ -231,7 +231,7 @@
           "clip": true,
           "interpolate": "monotone",
 
-          "color": "#167f79",
+          "color": "#567f9f",
           "opacity": 0.95
         },
 
@@ -263,7 +263,7 @@
           "clip": true,
           "interpolate": "monotone",
 
-          "color": "#e7a06f",
+          "color": "#d7a33c",
           "opacity": 0.75
         },
 
@@ -295,7 +295,7 @@
           "clip": true,
           "interpolate": "monotone",
 
-          "color": "#d84b35",
+          "color": "#e85d3f",
           "opacity": 0.95
         },
 
@@ -325,8 +325,8 @@
         "mark": {
           "type": "rule",
 
-          "color": "#ffffff",
-          "opacity": 0.3,
+          "color": "#132a2f",
+          "opacity": 0.35,
 
           "strokeWidth": 1,
           "strokeDash": [

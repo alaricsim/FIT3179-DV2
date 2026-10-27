@@ -6,9 +6,7 @@
   "height": 600,
 
   "projection": {
-    "type": "conicConformal",
-    "center": [134, -28],
-    "parallels": [-18, -36]
+    "type": "equalEarth"
   },
 
   "params": [

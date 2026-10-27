@@ -1,0 +1,7 @@
+metric,met_pct,missed_pct,category
+First-stop on-time running,15.0,85.0,Reliability
+Cancelled / incomplete trips,20.4,79.6,Reliability
+Customer complaints,41.6,58.4,Customer experience
+First-stop tracking,52.0,48.0,Real-time tracking
+Mid-stop tracking,64.0,36.0,Real-time tracking
+Last-stop tracking,70.0,30.0,Real-time tracking
